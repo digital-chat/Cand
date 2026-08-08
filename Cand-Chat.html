@@ -195,46 +195,177 @@ background:var(--card);border-radius:14px; border: 1px solid var(--border-color)
 display:flex;align-items:center;justify-content:center;box-shadow:0 -4px 15px rgba(0,0,0, .25);}
 .footer-bar .text{color:white;font-weight:700;font-size:13px;}
 
-/* Login Styles */
-#loginOverlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-background:linear-gradient(135deg,rgba(2,6,23,0.96),rgba(11,25,60,0.95));z-index:99999;transition:opacity .4s ease;}
-#loginBox{width:360px;max-width:94%;background:#0f1724;border-radius:12px;padding:22px 20px 20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.6);color:#fff;text-align:center;font-family:'Tajawal',sans-serif;}
-.logoHeader{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;}
-.logoCircle{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#007BFF,#5B21B6);
-display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff;box-shadow:0 0 10px rgba(0,123,255,0.4);}
-.logoHeader span{font-size:20px;font-weight:700;color:#fff;letter-spacing:.5px;}
-#loginBox h3{margin:0 0 14px;font-size:17px;color:#FFD700;text-shadow:0 0 8px rgba(255,215,0,0.12);}
-#loginBox input{box-sizing:border-box;width:100%;height:44px;padding:0 12px;border-radius:8px;
-border:1px solid rgba(255,255,255,0.15);background-color:rgba(255,255,255,0.05);color:#fff;margin:0 0 14px;
-outline:none;font-size:15px;direction:ltr;text-align:left;line-height:44px;caret-color:#4ea8ff;
-transition:border .18s ease,box-shadow .18s ease,background .12s ease;}
-#loginBox input::placeholder{color:rgba(255,255,255,0.65);}
-#loginBox input:focus{border-color:#4ea8ff;box-shadow:0 0 6px rgba(78,168,255,0.38);background-color:rgba(255,255,255,0.07);}
-#loginBox button{padding:10px 12px;width:100%;border-radius:8px;border:none;cursor:pointer;
-font-weight:700;font-size:15px;color:#fff;background:linear-gradient(90deg,#4ea8ff,#7c3aed);
-transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 3px 8px rgba(0,0,0,0.25);}
-#loginBox button:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,0.35);}
-#loginBox button:active{transform:translateY(1px);box-shadow:0 2px 6px rgba(0,0,0,0.2);}
-#loginMsg{color:#ffb3b3;font-size:13px;min-height:18px;margin-top:8px;}
-#protectedApp{display:none;opacity:0;transition:opacity .6s ease;}
-</style>
-</head>
-<body data-theme="dark">
+<!-- CSS الخاص بشاشة الدخول الاحترافية فقط -->
+<style>
+#loginOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07090e;
+  z-index: 99999;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-<!-- Login Overlay -->
+/* خلفية التوهج المحيطي */
+#loginOverlay::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.2; }
+  100% { transform: scale(1.15); opacity: 0.35; }
+}
+
+/* كارت اللوجن الحديث */
+.login-card {
+  position: relative;
+  width: 360px;
+  padding: 40px 32px 32px;
+  background: rgba(13, 18, 30, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+/* الأيقونة العلوية بأشكال النيون */
+.brand-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  font-size: 22px;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.login-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0 0 6px;
+  letter-spacing: -0.3px;
+}
+
+.login-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+/* حقل الإدخال */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.login-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 14, 23, 0.8);
+  color: #f8fafc;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: all 0.25s ease;
+}
+
+.login-input::placeholder {
+  letter-spacing: normal;
+  color: #475569;
+  font-size: 13px;
+}
+
+.login-input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 0 15px rgba(59, 130, 246, 0.2);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* زر الدخول */
+.login-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: inherit;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(124, 58, 237, 0.45);
+  filter: brightness(1.1);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+#loginMsg {
+  color: #f87171;
+  font-size: 12px;
+  min-height: 18px;
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+.security-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 22px;
+  font-size: 11px;
+  color: #475569;
+}
+</style>
+
+<!-- HTML الخاص بالشاشة -->
 <div id="loginOverlay">
-  <div id="loginBox">
-    <div class="logoHeader">
-      <div class="logoCircle">C</div>
-      <span>Canned Tool</span>
+  <div class="login-card">
+    <div class="brand-badge">🔒</div>
+    <div class="login-title">Canned Workspace</div>
+    <div class="login-sub">أدخل كلمة المرور للوصول إلى لوحة العمل</div>
+    
+    <div class="input-wrapper">
+      <input id="loginPwd" type="password" class="login-input" placeholder="••••••••" autocomplete="off">
     </div>
-    <h3>sign in</h3>
-    <input id="loginPwd" type="password" placeholder="Enter Password" autocomplete="off">
-    <button id="loginBtn">Login</button>
+    
+    <button id="loginBtn" class="login-btn">تسجيل الدخول</button>
     <div id="loginMsg"></div>
-    <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.6);">
-     Protected By Password
+
+    <div class="security-tag">
+      <span>Protected Access</span>
     </div>
   </div>
 </div>
