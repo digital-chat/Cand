@@ -3,485 +3,459 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Canned Tool</title>
+<title>Canned Workspace - Pro Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent: #2563eb;
+  --primary: #2563eb;
   --success: #059669;
-  --sidebar-w: 310px;
+  --sidebar-w: 300px;
 }
+/* تصميم هادئ ومريح للعين تماماً - بعيد عن السواد الحالك والبياض الناصع المؤذيين */
 [data-theme="light"]{
-  --bg1: #f1f5f9;
-  --card: #ffffff;
-  --muted: #475569;
-  --text: #0f172a;
-  --border-color: #cbd5e1;
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  --shadow-hover: rgba(37, 99, 235, 0.12);
-  --search-bg: #e2e8f0;
-  --scrollbar: #94a3b8;
-  --item-hover: #e2e8f0;
+  --bg-main: #f4f6f9;
+  --surface: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --hover-bg: #f8fafc;
   --active-bg: #eff6ff;
   --active-text: #1d4ed8;
-  --card-title-bg: #f8fafc;
+  --card-header: #f8fafc;
   --frame-bg: #f8fafc;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 [data-theme="dark"]{
-  /* درجة لون مريحة جداً للعين: رمادي داكن هادئ مائل للازرقاق غير مزعج */
-  --bg1: #1a2234;
-  --card: #242f45;
-  --muted: #94a3b8;
-  --text: #f1f5f9;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --shadow-color: rgba(0, 0, 0, 0.35);
-  --shadow-hover: rgba(59, 130, 246, 0.2);
-  --search-bg: #161d2d;
-  --scrollbar: #334155;
-  --item-hover: #2c3854;
-  --active-bg: rgba(59, 130, 246, 0.2);
+  --bg-main: #182030;
+  --surface: #202b42;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.08);
+  --hover-bg: #27344f;
+  --active-bg: rgba(37, 99, 235, 0.2);
   --active-text: #60a5fa;
-  --card-title-bg: #1e273b;
-  --frame-bg: #161d2d;
+  --card-header: #1b2438;
+  --frame-bg: #182030;
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-html,body{
-  height:100%; margin:0; padding:0; font-family:'Tajawal',sans-serif; direction:rtl;
-  background:var(--bg1);
-  color:var(--muted); -webkit-font-smoothing:antialiased;
-  transition: background .3s ease, color .3s ease;
+html, body {
+  height: 100%; margin: 0; padding: 0;
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  background: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================
-   LOGIN OVERLAY STYLING
-   ========================================== */
+/* --- شاشة تسجيل الدخول --- */
 #customLoginOverlay {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #111827;
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #111726;
   z-index: 999999;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.4s ease;
 }
-
-.custom-login-card {
-  position: relative;
-  width: 340px;
-  padding: 36px 28px 28px;
-  background: #242f45;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.login-card {
+  width: 350px; padding: 40px 30px;
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   text-align: center;
 }
-
-.custom-brand-icon {
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 16px;
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #60a5fa;
-  font-size: 22px;
+.login-icon {
+  width: 56px; height: 56px; margin: 0 auto 16px;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: #60a5fa; font-size: 24px;
 }
-
-.custom-login-title {
-  font-size: 20px;
-  font-weight: 800;
-  color: #f8fafc;
-  margin: 0 0 6px;
+.login-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.login-sub { font-size: 13px; color: #94a3b8; margin-bottom: 24px; }
+.login-input {
+  width: 100%; height: 48px; box-sizing: border-box;
+  padding: 0 16px; border-radius: 12px;
+  background: #111726; border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; font-size: 15px; font-family: inherit; text-align: center;
+  outline: none; margin-bottom: 16px; transition: border-color 0.2s;
 }
-
-.custom-login-sub {
-  font-size: 12px;
-  color: #94a3b8;
-  margin-bottom: 24px;
-}
-
-.custom-input-box {
-  box-sizing: border-box;
-  width: 100%;
-  height: 48px;
-  padding: 0 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #161d2d;
-  color: #f8fafc;
-  outline: none;
-  font-size: 14px;
-  font-family: inherit;
-  text-align: center;
-  margin-bottom: 16px;
-  transition: all 0.2s ease;
-}
-
-.custom-input-box:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
-}
-
-.custom-login-btn {
-  width: 100%;
-  height: 48px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: inherit;
-  color: #ffffff;
+.login-input:focus { border-color: #2563eb; }
+.login-btn {
+  width: 100%; height: 48px; border-radius: 12px; border: none;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-  transition: all 0.2s ease;
+  color: #fff; font-weight: 700; font-size: 15px; font-family: inherit;
+  cursor: pointer; box-shadow: 0 4px 15px rgba(37,99,235,0.3);
+  transition: transform 0.2s, filter 0.2s;
+}
+.login-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+#loginMsg { color: #f87171; font-size: 13px; margin-top: 12px; font-weight: 600; min-height: 18px; }
+
+/* --- هيكل التطبيق الأساسي --- */
+#protectedApp { display: none; opacity: 0; transition: opacity 0.4s ease; }
+
+/* شاشة التحميل */
+.splash {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-main); z-index: 9999; transition: opacity 0.3s;
+}
+.splash-content { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.spinner { font-size: 32px; animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* الشريط العلوي المتحرك */
+.header-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 38px;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; z-index: 200; overflow: hidden;
+}
+.marquee { width: 100%; white-space: nowrap; overflow: hidden; }
+.marquee span {
+  display: inline-block; padding-left: 100%;
+  animation: scrollText 25s linear infinite;
+  font-size: 12px; font-weight: 700; color: var(--text-muted);
+}
+@keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* زر تبديل الثيم */
+.theme-btn {
+  position: fixed; top: 5px; left: 16px; z-index: 210;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-main); padding: 4px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: background 0.2s;
+}
+.theme-btn:hover { background: var(--hover-bg); }
+
+/* التخطيط العام (Grid / Sidebar) */
+.layout {
+  display: flex; flex-direction: row-reverse; gap: 24px;
+  padding: 54px 20px 48px 20px; max-width: 1650px; margin: 0 auto; box-sizing: border-box;
 }
 
-.custom-login-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
+/* القائمة الجانبية (يمين) */
+.sidebar {
+  position: fixed; top: 48px; right: 20px; width: var(--sidebar-w);
+  height: calc(100vh - 72px); background: var(--surface);
+  border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; padding: 14px; box-sizing: border-box; z-index: 100;
 }
-
-#customLoginMsg {
-  color: #f87171;
-  font-size: 12px;
-  min-height: 18px;
-  margin-top: 12px;
-  font-weight: 600;
+.search-wrapper {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-main); padding: 8px 12px; border-radius: 10px;
+  border: 1px solid var(--border); margin-bottom: 12px;
 }
-
-/* ==========================================
-   APP CORE STYLING
-   ========================================== */
-#protectedApp { display:none; opacity:0; transition:opacity .5s ease; }
-
-.splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;
-background:var(--bg1);transition:opacity .4s ease;}
-.splash-box{display:flex;flex-direction:column;align-items:center;gap:16px;}
-.splash .gear{font-size:36px;animation:spin 1s linear infinite;}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.loader-text { font-weight: 800; color: var(--text); font-size: 16px; }
-
-.header-wrap{position:fixed;top:0;left:0;right:0;height:40px;display:flex;align-items:center;z-index:200;
-background:#161d2d;border-bottom:1px solid var(--border-color);}
-.marquee{overflow:hidden;white-space:nowrap;width:100%;padding:4px 18px;}
-.marquee .text{display:inline-block;white-space:nowrap;font-weight:700;color:#cbd5e1;font-size:12px;
-animation:moveLeft 20s linear infinite;}
-@keyframes moveLeft{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-
-.theme-toggle{position:fixed;top:5px;left:14px;z-index:210;
-background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
-color:#f8fafc;padding:3px 10px;border-radius:20px;cursor:pointer;font-weight:700;font-size:13px;
-backdrop-filter: blur(4px); transition: all .2s ease;}
-.theme-toggle:hover { background: rgba(255,255,255,0.2); }
-
-.app{display:flex;flex-direction:row-reverse;gap:20px; padding: 56px 20px 50px 20px; max-width:1600px; margin:0 auto;box-sizing:border-box;}
-
-/* Sidebar */
-.sidebar{
-  position: fixed; 
-  top: 48px; 
-  right: 16px; 
-  width: var(--sidebar-w);
-  height: calc(100vh - 84px); 
-  display: flex; 
-  flex-direction: column;
-  background: var(--card); 
-  border-radius: 14px; 
-  padding: 14px;
-  box-shadow: 0 8px 24px var(--shadow-color); 
-  border: 1px solid var(--border-color);
-  z-index: 110; 
-  box-sizing: border-box;
+.search-wrapper input {
+  flex: 1; border: none; outline: none; background: transparent;
+  color: var(--text-main); font-size: 13px; font-family: inherit; font-weight: 600;
+  text-align: right; direction: rtl;
 }
+.search-wrapper input::placeholder { color: var(--text-muted); opacity: 0.6; }
 
-.search-box{
-  display:flex; align-items:center; gap:10px; 
-  background: var(--search-bg); padding: 8px 12px;
-  border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 12px;
+.sheets-container {
+  flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
 }
-.search-box:focus-within { border-color: var(--accent); }
-.search-box input{
-  flex:1; border:none; outline:none; background:transparent; color:var(--text);
-  font-size:13px; padding:2px 0; direction: rtl; text-align: right; font-family: inherit; font-weight: 700;
-}
-.search-box input::placeholder { color: var(--muted); opacity: 0.7; }
+.sheets-container::-webkit-scrollbar { width: 4px; }
+.sheets-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 
-.sheet-list{ flex-grow: 1; overflow-y: auto; display:flex; flex-direction:column; gap:6px; padding-left: 2px; }
-.sheet-list::-webkit-scrollbar { width: 5px; }
-.sheet-list::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 10px; }
-
-.sheet-item{
-  padding: 11px 14px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 14px;
-  color: var(--text); border: 1px solid transparent; transition: all 0.2s ease;
+.sheet-tab {
+  padding: 10px 12px; border-radius: 10px; cursor: pointer;
+  font-weight: 700; font-size: 13px; color: var(--text-muted);
   display: flex; align-items: center; justify-content: flex-start; text-align: right;
-  width: 100%; box-sizing: border-box;
+  transition: all 0.2s ease; border: 1px solid transparent;
 }
-.sheet-item[dir="ltr"] { direction: ltr; justify-content: flex-start; text-align: left; }
-.sheet-item:hover { background: var(--item-hover); color: var(--active-text); }
-.sheet-item.active{
-  background: var(--active-bg); border-color: rgba(59, 130, 246, 0.4); color: var(--active-text);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
-}
-
-/* Main Area & Cards */
-.main{ flex: 1; margin-right: 330px; padding-top: 4px; }
-.grid{ display:grid; gap:16px; grid-template-columns: 1fr; }
-@media(min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media(min-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-
-@media(max-width:768px){
-  .app{flex-direction:column-reverse; padding-top:50px;}
-  .sidebar{position:relative; top:auto; right:auto; width:100%; margin: 0 0 16px 0; height: auto; max-height: 40vh;}
-  .main{margin-right:0}
+.sheet-tab[dir="ltr"] { direction: ltr; justify-content: flex-start; text-align: left; }
+.sheet-tab:hover { background: var(--hover-bg); color: var(--text-main); }
+.sheet-tab.active {
+  background: var(--active-bg); color: var(--active-text);
+  border-color: rgba(37,99,235,0.2);
 }
 
-.card{
-  border-radius:14px; border:1px solid var(--border-color); display:flex; flex-direction:column;
-  overflow:hidden; cursor:pointer; min-height:170px; transition: all .2s ease;
-  background:var(--card); box-shadow:0 4px 12px var(--shadow-color); opacity:0; transform:translateY(8px);
+/* منطقة الكروت الرئيسية (3 كروت بجانب بعض) */
+.main-content { flex: 1; margin-right: 324px; }
+.cards-grid {
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
 }
-.card.visible{opacity:1; transform:translateY(0);}
-.card:hover{
-  transform:translateY(-3px); border-color: rgba(59, 130, 246, 0.4);
-  box-shadow:0 8px 20px var(--shadow-hover);
-}
+@media (min-width: 800px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1250px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }
 
-.card-title{
-  text-align: center; font-weight: 800; font-size: 14px; color: var(--text);
-  padding: 10px 12px; background: var(--card-title-bg); border-bottom: 1px solid var(--border-color);
-}
-
-.card-content{padding:12px; flex:1; display:flex; flex-direction:column;}
-
-.frame{
-  background: var(--frame-bg); border-radius: 10px; padding: 12px; flex:1;
-  color: var(--text); font-size: 13px; line-height: 1.6; border: 1px solid var(--border-color);
-  display:-webkit-box; -webkit-line-clamp: 6; -webkit-box-orient:vertical; overflow:hidden;
-  font-weight: 600;
+@media (max-width: 768px) {
+  .layout { flex-direction: column-reverse; padding-top: 50px; }
+  .sidebar { position: relative; top: auto; right: auto; width: 100%; height: auto; max-height: 40vh; margin-bottom: 16px; }
+  .main-content { margin-right: 0; }
 }
 
-.card-footer{
-  padding: 8px 12px; font-size: 11px; color: var(--muted); text-align: left; direction: ltr;
-  border-top:1px solid var(--border-color); transition: all .2s ease; font-weight: 700;
+/* تصميم الكارت الاحترافي */
+.canned-card {
+  background: var(--surface); border-radius: 14px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; overflow: hidden; cursor: pointer;
+  min-height: 180px; transition: all 0.25s ease; opacity: 0; transform: translateY(6px);
 }
-.card-footer.copied { color: white; background: var(--success); text-align:center; font-weight: 700; direction: rtl; }
-.empty{ grid-column: 1 / -1; text-align:center; padding:40px; color:var(--muted); background:var(--card); border-radius:14px; border: 1px solid var(--border-color); font-weight: 700; }
+.canned-card.show { opacity: 1; transform: translateY(0); }
+.canned-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 
-.footer-wrapper{position:fixed; left:0; right:0; bottom:0; z-index:100;}
-.footer-bar{height:28px; background:#161d2d; display:flex; align-items:center; justify-content:center; border-top:1px solid var(--border-color);}
-.footer-bar .text{color:var(--muted); font-weight:600; font-size:11px;}
+.card-header-title {
+  background: var(--card-header); padding: 10px 14px;
+  text-align: center; font-weight: 800; font-size: 13px; color: var(--text-main);
+  border-bottom: 1px solid var(--border);
+}
+
+.card-body-frame {
+  padding: 12px; flex: 1; display: flex; flex-direction: column;
+}
+.card-text-box {
+  background: var(--frame-bg); border-radius: 10px; padding: 12px;
+  flex: 1; color: var(--text-main); font-size: 13px; line-height: 1.6;
+  border: 1px solid var(--border); font-weight: 500;
+  display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.card-footer-info {
+  padding: 8px 12px; font-size: 11px; color: var(--text-muted);
+  text-align: left; direction: ltr; border-top: 1px solid var(--border);
+  font-weight: 700; transition: background 0.2s, color 0.2s;
+}
+.card-footer-info.copied {
+  background: var(--success); color: #fff; text-align: center; direction: rtl;
+}
+
+.empty-state {
+  grid-column: 1 / -1; text-align: center; padding: 50px;
+  background: var(--surface); border-radius: 14px; border: 1px solid var(--border);
+  color: var(--text-muted); font-weight: 700; font-size: 14px;
+}
+
+/* الشريط السفلي */
+.footer-bottom {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 26px;
+  background: var(--surface); border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; z-index: 90;
+}
+.footer-bottom span { font-size: 11px; font-weight: 600; color: var(--text-muted); }
 </style>
 </head>
 <body data-theme="dark">
 
-<!-- LOGIN SCREEN -->
+<!-- شاشة الباسورد -->
 <div id="customLoginOverlay">
-  <div class="custom-login-card">
-    <div class="custom-brand-icon">🔒</div>
-    <div class="custom-login-title">Canned Workspace</div>
-    <div class="custom-login-sub">أدخل كلمة المرور للوصول إلى لوحة العمل</div>
-    
-    <input id="customLoginPwd" type="password" class="custom-input-box" placeholder="••••••••" autocomplete="off">
-    <button id="customLoginBtn" class="custom-login-btn">تسجيل الدخول</button>
-    <div id="customLoginMsg"></div>
+  <div class="login-card">
+    <div class="login-icon">🔒</div>
+    <div class="login-title">Canned Workspace</div>
+    <div class="login-sub">أدخل كلمة المرور للمتابعة إلى لوحة العمل</div>
+    <input type="password" id="loginPwd" class="login-input" placeholder="••••••••" autocomplete="off">
+    <button id="loginBtn" class="login-btn">دخول</button>
+    <div id="loginMsg"></div>
   </div>
 </div>
 
-<!-- PROTECTED APP MAIN BODY -->
+<!-- التطبيق الرئيسي المحمي -->
 <div id="protectedApp">
-
-<!-- Splash Screen -->
-<div class="splash" id="splash">
-  <div class="splash-box">
-    <div class="gear">⚙️</div>
-    <div class="loader-text">جاري تحميل البيانات...</div>
-  </div>
-</div>
-
-<!-- Header Banner -->
-<div class="header-wrap">
-  <div class="marquee">
-    <span class="text">
-      ⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️
-🚫 في حال وجود bulk canned يجب تقسيم الكاند في الشات 🚫
-    </span>
-  </div>
-</div>
-
-<!-- Theme Toggle Button -->
-<button class="theme-toggle" id="themeToggle">🌙 الداكن</button>
-
-<!-- Main App Layout -->
-<div class="app">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="search-box">
-      <span style="color: var(--muted); font-size: 13px;">🔍</span>
-      <input type="text" id="searchInput" placeholder="بحث سريع...">
-    </div>
-    <div class="sheet-list" id="sheetList"></div>
-  </div>
-
-  <!-- Main Grid -->
-  <div class="main">
-    <div class="grid" id="cardsGrid">
-      <div class="empty">اختر قسم من القائمة للبدء 🚀</div>
+  
+  <!-- شاشة التحميل -->
+  <div class="splash" id="splashScreen">
+    <div class="splash-content">
+      <div class="spinner">⚙️</div>
+      <div style="font-weight: 700; font-size: 14px; color: var(--text-main);">جاري تجهيز الكاندات...</div>
     </div>
   </div>
-</div>
 
-<!-- Footer Bar -->
-<div class="footer-wrapper">
-  <div class="footer-bar">
-    <div class="text">Designed and Developed By : Geek © 2025–2026 — Version 5.2.0</div>
+  <!-- الشريط المتحرك العلوي -->
+  <header class="header-bar">
+    <div class="marquee">
+      <span>⚠️ تذكر دائماً: استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️ &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚫 في حال وجود bulk canned يجب تقسيم الكاند في الشات 🚫</span>
+    </div>
+  </header>
+
+  <!-- زر تبديل الثيم -->
+  <button class="theme-btn" id="themeToggle">🌙 الوضع الهادئ</button>
+
+  <!-- التخطيط العام -->
+  <div class="layout">
+    
+    <!-- القائمة الجانبية (يمين) -->
+    <aside class="sidebar">
+      <div class="search-wrapper">
+        <span style="font-size: 12px;">🔍</span>
+        <input type="text" id="searchInput" placeholder="بحث سريع في الأقسام...">
+      </div>
+      <div class="sheets-container" id="sheetsListContainer"></div>
+    </aside>
+
+    <!-- منطقة الكروت (3 بجانب بعض) -->
+    <main class="main-content">
+      <div class="cards-grid" id="cardsGridContainer">
+        <div class="empty-state">اختر قسماً من القائمة الجانبية للبدء 🚀</div>
+      </div>
+    </main>
+
   </div>
+
+  <!-- الشريط السفلي الثابت -->
+  <footer class="footer-bottom">
+    <span>Designed and Developed By : Geek © 2025–2026 — Version 5.3.0</span>
+  </footer>
+
 </div>
 
-<audio id="clickSound" preload="auto">
-  <source src="data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCA..." type="audio/mp3">
-</audio>
-
+<!-- مكتبة قراءة الاكسيل -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
-  // --- LOGIN LOGIC ---
-  const FIXED_PASSWORD = 'Chat2025';
+  const PASS = 'Chat2025';
   const overlay = document.getElementById('customLoginOverlay');
-  const btn = document.getElementById('customLoginBtn');
-  const pwd = document.getElementById('customLoginPwd');
-  const msg = document.getElementById('customLoginMsg');
-  const app = document.getElementById('protectedApp');
+  const pwdInput = document.getElementById('loginPwd');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginMsg = document.getElementById('loginMsg');
+  const protectedApp = document.getElementById('protectedApp');
 
-  pwd.focus();
-  function unlock() {
-    if (pwd.value === FIXED_PASSWORD) {
+  pwdInput.focus();
+
+  function handleLogin() {
+    if (pwdInput.value === PASS) {
       overlay.style.opacity = '0';
-      overlay.style.visibility = 'hidden';
       setTimeout(() => overlay.style.display = 'none', 400);
-      app.style.display = 'block';
-      setTimeout(() => app.style.opacity = '1', 50);
-      sessionStorage.setItem('candat_unlocked', '1');
+      protectedApp.style.display = 'block';
+      setTimeout(() => protectedApp.style.opacity = '1', 50);
+      sessionStorage.setItem('auth_granted', 'true');
     } else {
-      msg.textContent = 'كلمة المرور غير صحيحة، حاول مجدداً';
-      pwd.value = '';
-      pwd.focus();
+      loginMsg.textContent = 'كلمة المرور غير صحيحة، حاول مجدداً';
+      pwdInput.value = '';
+      pwdInput.focus();
     }
   }
-  btn.addEventListener('click', unlock);
-  pwd.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
-  
-  if (sessionStorage.getItem('candat_unlocked') === '1') {
+
+  loginBtn.addEventListener('click', handleLogin);
+  pwdInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
+
+  if (sessionStorage.getItem('auth_granted') === 'true') {
     overlay.style.display = 'none';
-    app.style.display = 'block';
-    app.style.opacity = '1';
+    protectedApp.style.display = 'block';
+    protectedApp.style.opacity = '1';
   }
 
-  // --- APP CORE LOGIC ---
-  const splash = document.getElementById("splash");
-  const sheetList = document.getElementById("sheetList");
-  const cardsGrid = document.getElementById("cardsGrid");
-  const searchInput = document.getElementById("searchInput");
-  const clickSound = document.getElementById("clickSound");
-  const themeToggle = document.getElementById("themeToggle");
+  // --- منطق التطبيق الذكي ---
+  const splash = document.getElementById('splashScreen');
+  const sheetsContainer = document.getElementById('sheetsListContainer');
+  const cardsGrid = document.getElementById('cardsGridContainer');
+  const searchInput = document.getElementById('searchInput');
+  const themeToggle = document.getElementById('themeToggle');
 
-  let workbookData = {};
-  let currentSheet = null;
+  let excelDataMap = {};
+  let activeSheetName = null;
 
-  setTimeout(() => splash.style.opacity = "0", 500);
-  setTimeout(() => splash.style.display = "none", 800);
+  setTimeout(() => {
+    splash.style.opacity = '0';
+    setTimeout(() => splash.style.display = 'none', 300);
+  }, 600);
 
-  themeToggle.addEventListener("click", () => {
-    const current = document.body.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    document.body.setAttribute("data-theme", next);
-    themeToggle.textContent = next === "dark" ? "🌙 الداكن" : "☀️ الفاتح";
+  // التحكم في الثيم
+  themeToggle.addEventListener('click', () => {
+    const current = document.body.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', next);
+    themeToggle.textContent = next === 'dark' ? '🌙 الوضع الهادئ' : '☀️ الوضع المضيء';
   });
 
+  // جلب وقراءة ملف الاكسيل
   fetch('candat_data.xlsx')
-    .then(resp => {
-      if (!resp.ok) throw new Error("File not found");
-      return resp.arrayBuffer();
+    .then(res => {
+      if (!res.ok) throw new Error('File missing');
+      return res.arrayBuffer();
     })
     .then(buffer => {
-      const wb = XLSX.read(buffer, { type: "array" });
-      handleWorkbook(wb);
+      const workbook = XLSX.read(buffer, { type: 'array' });
+      processWorkbook(workbook);
     })
-    .catch((error) => {
-        cardsGrid.innerHTML = '<div class="empty">⚠️ تعذر تحميل ملف البيانات (candat_data.xlsx).</div>';
+    .catch(() => {
+      cardsGrid.innerHTML = '<div class="empty-state">⚠️ تعذر العثور على ملف البيانات (candat_data.xlsx). تأكد من وجوده بجوار الصفحة.</div>';
     });
 
-  function handleWorkbook(wb) {
-    workbookData = {};
-    wb.SheetNames.forEach(name => {
-      const ws = wb.Sheets[name];
-      const rows = XLSX.utils.sheet_to_json(ws, { header: 1 });
+  function processWorkbook(wb) {
+    excelDataMap = {};
+    wb.SheetNames.forEach(sheetName => {
+      const sheet = wb.Sheets[sheetName];
+      const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
       const items = [];
       for (let i = 1; i < rows.length; i++) {
         if (rows[i] && rows[i][0] && rows[i][1]) {
-          items.push({ name: String(rows[i][0]), content: String(rows[i][1]), sheet: name });
+          items.push({ name: String(rows[i][0]), content: String(rows[i][1]), sheet: sheetName });
         }
       }
-      workbookData[name] = items;
+      excelDataMap[sheetName] = items;
     });
-    renderSheetList(wb.SheetNames);
-    if (wb.SheetNames.length > 0) showSheet(wb.SheetNames[0]);
+
+    renderSidebar(wb.SheetNames);
+    if (wb.SheetNames.length > 0) {
+      loadSheetCards(wb.SheetNames[0]);
+    }
   }
 
-  function renderSheetList(names) {
-    sheetList.innerHTML = "";
-    names.forEach(name => {
-      const btn = document.createElement("div");
-      btn.className = "sheet-item";
-      btn.textContent = name;
-      if (/^[a-zA-Z &0-9]+$/.test(name)) btn.setAttribute('dir', 'ltr');
-      btn.addEventListener("click", () => showSheet(name));
-      sheetList.appendChild(btn);
+  function renderSidebar(sheetNames) {
+    sheetsContainer.innerHTML = '';
+    sheetNames.forEach(name => {
+      const tab = document.createElement('div');
+      tab.className = 'sheet-tab';
+      tab.textContent = name;
+      if (/^[a-zA-Z &0-9]+$/.test(name)) tab.setAttribute('dir', 'ltr');
+      tab.addEventListener('click', () => loadSheetCards(name));
+      sheetsContainer.appendChild(tab);
     });
   }
 
-  function showSheet(name) {
+  function loadSheetCards(sheetName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    currentSheet = name;
+    activeSheetName = sheetName;
     searchInput.value = '';
-    document.querySelectorAll(".sheet-item").forEach(el => el.classList.remove("active"));
-    const activeSheetElement = [...sheetList.children].find(el => el.textContent === name);
-    if (activeSheetElement) activeSheetElement.classList.add("active");
-    renderCards(workbookData[name] || []);
+    
+    document.querySelectorAll('.sheet-tab').forEach(el => el.classList.remove('active'));
+    const matchedTab = [...sheetsContainer.children].find(el => el.textContent === sheetName);
+    if (matchedTab) matchedTab.classList.add('active');
+
+    renderCardsList(excelDataMap[sheetName] || []);
   }
 
-  function renderCards(items) {
-    cardsGrid.innerHTML = "";
-    if (!items || !items.length) {
-      const query = searchInput.value.trim();
-      cardsGrid.innerHTML = `<div class="empty">${query ? `لا توجد نتائج مطابقة لـ "${query}"` : 'لا توجد بيانات متاحة'}</div>`;
+  function renderCardsList(items) {
+    cardsGrid.innerHTML = '';
+    if (!items || items.length === 0) {
+      cardsGrid.innerHTML = '<div class="empty-state">لا توجد بيانات متاحة في هذا القسم حالياً.</div>';
       return;
     }
+
     items.forEach((item, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      const displayContent = item.content.replace(/\n/g, "<br>");
+      const card = document.createElement('div');
+      card.className = 'canned-card';
+      const formattedContent = item.content.replace(/\n/g, '<br>');
 
       card.innerHTML = `
-        <div class="card-title">${item.name}</div>
-        <div class="card-content">
-          <div class="frame">${displayContent}</div>
+        <div class="card-header-title">${item.name}</div>
+        <div class="card-body-frame">
+          <div class="card-text-box">${formattedContent}</div>
         </div>
-        <div class="card-footer" data-original-text="Sheet: ${item.sheet}">Sheet: ${item.sheet}</div>`;
+        <div class="card-footer-info" data-original="Sheet: ${item.sheet}">Sheet: ${item.sheet}</div>
+      `;
 
-      card.addEventListener("click", () => {
-        const contentToCopy = item.content.replace(/\n/g, "\n<p>&nbsp;</p>\n");
-        copyText(contentToCopy);
-        playClick();
-        
-        const footer = card.querySelector('.card-footer');
-        const originalText = footer.getAttribute('data-original-text');
-        footer.textContent = "✅ تم النسخ إلى الحافظة";
+      card.addEventListener('click', () => {
+        const textToCopy = item.content;
+        navigator.clipboard.writeText(textToCopy).catch(() => {
+          const t = document.createElement('textarea');
+          t.value = textToCopy;
+          document.body.appendChild(t);
+          t.select();
+          document.execCommand('copy');
+          document.body.removeChild(t);
+        });
+
+        const footer = card.querySelector('.card-footer-info');
+        const originalText = footer.getAttribute('data-original');
+        footer.textContent = '✅ تم النسخ بنجاح';
         footer.classList.add('copied');
         setTimeout(() => {
           footer.textContent = originalText;
@@ -490,43 +464,36 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       cardsGrid.appendChild(card);
-      setTimeout(() => card.classList.add("visible"), 20 + index * 15);
+      setTimeout(() => card.classList.add('show'), index * 20);
     });
   }
 
-  function copyText(text) {
-    navigator.clipboard.writeText(text).catch(() => {
-      const temp = document.createElement("textarea");
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
-    });
-  }
+  // محرك البحث الفوري
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    if (!query) {
+      if (activeSheetName) loadSheetCards(activeSheetName);
+      return;
+    }
 
-  function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(() => {});
-  }
-
-  searchInput.addEventListener("input", () => {
-    const q = (searchInput.value || '').trim().toLowerCase();
-    if (!q) { if (currentSheet) showSheet(currentSheet); return; }
-    
-    document.querySelectorAll(".sheet-item").forEach(el => el.classList.remove("active"));
-    const results = [];
-    Object.keys(workbookData).forEach(sheetName => {
-      (workbookData[sheetName] || []).forEach(item => {
-        if ((item.name + ' ' + item.content).toLowerCase().includes(q)) {
-          results.push({ ...item, sheet: sheetName });
+    document.querySelectorAll('.sheet-tab').forEach(el => el.classList.remove('active'));
+    let searchResults = [];
+    Object.keys(excelDataMap).forEach(sheet => {
+      excelDataMap[sheet].forEach(item => {
+        if ((item.name + ' ' + item.content).toLowerCase().includes(query)) {
+          searchResults.push({ ...item, sheet: sheet });
         }
       });
     });
-    renderCards(results);
+    
+    cardsGrid.innerHTML = '';
+    if (searchResults.length === 0) {
+      cardsGrid.innerHTML = `<div class="empty-state">لا توجد نتائج مطابقة لـ "${query}"</div>`;
+      return;
+    }
+    renderCardsList(searchResults);
   });
 });
 </script>
-</div>
 </body>
 </html>
