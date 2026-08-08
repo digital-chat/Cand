@@ -3,47 +3,47 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Canned Workspace - Pro Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<title>Canned Workspace - Executive Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --primary: #2563eb;
-  --success: #059669;
-  --sidebar-w: 300px;
+:root {
+  --sidebar-w: 280px;
 }
-/* تصميم هادئ ومريح للعين تماماً - بعيد عن السواد الحالك والبياض الناصع المؤذيين */
-[data-theme="light"]{
-  --bg-main: #f4f6f9;
-  --surface: #ffffff;
-  --text-main: #1e293b;
+/* تصميم تنفيذي احترافي للغاية (Executive Theme) */
+[data-theme="light"] {
+  --bg-app: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-surface: #f1f5f9;
+  --text-main: #0f172a;
   --text-muted: #64748b;
-  --border: #e2e8f0;
-  --hover-bg: #f8fafc;
-  --active-bg: #eff6ff;
-  --active-text: #1d4ed8;
-  --card-header: #f8fafc;
-  --frame-bg: #f8fafc;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --border-color: #e2e8f0;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --success: #059669;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
 }
-[data-theme="dark"]{
-  --bg-main: #182030;
-  --surface: #202b42;
-  --text-main: #f1f5f9;
+[data-theme="dark"] {
+  --bg-app: #0f172a;
+  --bg-sidebar: #1e293b;
+  --bg-card: #1e293b;
+  --bg-surface: #0f172a;
+  --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border: rgba(255, 255, 255, 0.08);
-  --hover-bg: #27344f;
-  --active-bg: rgba(37, 99, 235, 0.2);
-  --active-text: #60a5fa;
-  --card-header: #1b2438;
-  --frame-bg: #182030;
-  --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent: #3b82f6;
+  --accent-light: rgba(59, 130, 246, 0.15);
+  --success: #10b981;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
 }
 
 html, body {
   height: 100%; margin: 0; padding: 0;
   font-family: 'Tajawal', sans-serif;
   direction: rtl;
-  background: var(--bg-main);
+  background: var(--bg-app);
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s ease, color 0.3s ease;
@@ -53,203 +53,202 @@ html, body {
 #customLoginOverlay {
   position: fixed; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  background: #111726;
+  background: #090d16;
   z-index: 999999;
   transition: opacity 0.4s ease;
 }
-.login-card {
-  width: 350px; padding: 40px 30px;
+.login-box {
+  width: 360px; padding: 40px 32px;
   background: #1e293b;
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 .login-icon {
-  width: 56px; height: 56px; margin: 0 auto 16px;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  border-radius: 16px;
+  width: 52px; height: 52px; margin: 0 auto 16px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  color: #60a5fa; font-size: 24px;
+  color: #60a5fa; font-size: 22px;
 }
-.login-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-.login-sub { font-size: 13px; color: #94a3b8; margin-bottom: 24px; }
+.login-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.login-sub { font-size: 12px; color: #94a3b8; margin-bottom: 24px; }
 .login-input {
-  width: 100%; height: 48px; box-sizing: border-box;
-  padding: 0 16px; border-radius: 12px;
-  background: #111726; border: 1px solid rgba(255,255,255,0.1);
-  color: #fff; font-size: 15px; font-family: inherit; text-align: center;
+  width: 100%; height: 44px; box-sizing: border-box;
+  padding: 0 16px; border-radius: 10px;
+  background: #0f172a; border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; font-size: 14px; font-family: inherit; text-align: center;
   outline: none; margin-bottom: 16px; transition: border-color 0.2s;
 }
-.login-input:focus { border-color: #2563eb; }
+.login-input:focus { border-color: #3b82f6; }
 .login-btn {
-  width: 100%; height: 48px; border-radius: 12px; border: none;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff; font-weight: 700; font-size: 15px; font-family: inherit;
-  cursor: pointer; box-shadow: 0 4px 15px rgba(37,99,235,0.3);
-  transition: transform 0.2s, filter 0.2s;
+  width: 100%; height: 44px; border-radius: 10px; border: none;
+  background: #2563eb; color: #fff; font-weight: 700; font-size: 14px; font-family: inherit;
+  cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  transition: background 0.2s, transform 0.1s;
 }
-.login-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
-#loginMsg { color: #f87171; font-size: 13px; margin-top: 12px; font-weight: 600; min-height: 18px; }
+.login-btn:hover { background: #1d4ed8; }
+#loginMsg { color: #f87171; font-size: 12px; margin-top: 12px; font-weight: 600; min-height: 18px; }
 
 /* --- هيكل التطبيق الأساسي --- */
 #protectedApp { display: none; opacity: 0; transition: opacity 0.4s ease; }
 
-/* شاشة التحميل */
+/* شاشة التحميل الأولية */
 .splash {
   position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-  background: var(--bg-main); z-index: 9999; transition: opacity 0.3s;
+  background: var(--bg-app); z-index: 9999; transition: opacity 0.3s;
 }
 .splash-content { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.spinner { font-size: 32px; animation: spin 1s linear infinite; }
+.spinner { font-size: 30px; animation: spin 0.8s linear infinite; }
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* الشريط العلوي المتحرك */
-.header-bar {
-  position: fixed; top: 0; left: 0; right: 0; height: 38px;
-  background: var(--surface); border-bottom: 1px solid var(--border);
+.top-ticker {
+  position: fixed; top: 0; left: 0; right: 0; height: 34px;
+  background: var(--bg-sidebar); border-bottom: 1px solid var(--border-color);
   display: flex; align-items: center; z-index: 200; overflow: hidden;
 }
-.marquee { width: 100%; white-space: nowrap; overflow: hidden; }
-.marquee span {
+.ticker-content { width: 100%; white-space: nowrap; overflow: hidden; }
+.ticker-content span {
   display: inline-block; padding-left: 100%;
-  animation: scrollText 25s linear infinite;
-  font-size: 12px; font-weight: 700; color: var(--text-muted);
+  animation: scrollTicker 28s linear infinite;
+  font-size: 11px; font-weight: 700; color: var(--text-muted);
 }
-@keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+@keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
 /* زر تبديل الثيم */
-.theme-btn {
-  position: fixed; top: 5px; left: 16px; z-index: 210;
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text-main); padding: 4px 12px; border-radius: 20px;
-  font-size: 12px; font-weight: 700; cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: background 0.2s;
+.theme-switch {
+  position: fixed; top: 4px; left: 16px; z-index: 210;
+  background: var(--bg-sidebar); border: 1px solid var(--border-color);
+  color: var(--text-main); padding: 3px 10px; border-radius: 6px;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  box-shadow: var(--shadow); transition: background 0.2s;
 }
-.theme-btn:hover { background: var(--hover-bg); }
+.theme-switch:hover { background: var(--bg-surface); }
 
-/* التخطيط العام (Grid / Sidebar) */
-.layout {
-  display: flex; flex-direction: row-reverse; gap: 24px;
-  padding: 54px 20px 48px 20px; max-width: 1650px; margin: 0 auto; box-sizing: border-box;
+/* تخطيط الشاشة العام */
+.app-layout {
+  display: flex; flex-direction: row-reverse; gap: 20px;
+  padding: 48px 16px 40px 16px; max-width: 1600px; margin: 0 auto; box-sizing: border-box;
 }
 
 /* القائمة الجانبية (يمين) */
-.sidebar {
-  position: fixed; top: 48px; right: 20px; width: var(--sidebar-w);
-  height: calc(100vh - 72px); background: var(--surface);
-  border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow);
-  display: flex; flex-direction: column; padding: 14px; box-sizing: border-box; z-index: 100;
+.sidebar-panel {
+  position: fixed; top: 44px; right: 16px; width: var(--sidebar-w);
+  height: calc(100vh - 64px); background: var(--bg-sidebar);
+  border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; padding: 12px; box-sizing: border-box; z-index: 100;
 }
-.search-wrapper {
+.search-container {
   display: flex; align-items: center; gap: 8px;
-  background: var(--bg-main); padding: 8px 12px; border-radius: 10px;
-  border: 1px solid var(--border); margin-bottom: 12px;
+  background: var(--bg-surface); padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--border-color); margin-bottom: 10px;
 }
-.search-wrapper input {
+.search-container input {
   flex: 1; border: none; outline: none; background: transparent;
-  color: var(--text-main); font-size: 13px; font-family: inherit; font-weight: 600;
+  color: var(--text-main); font-size: 12px; font-family: inherit; font-weight: 600;
   text-align: right; direction: rtl;
 }
-.search-wrapper input::placeholder { color: var(--text-muted); opacity: 0.6; }
+.search-container input::placeholder { color: var(--text-muted); opacity: 0.6; }
 
-.sheets-container {
-  flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
+.sheets-nav {
+  flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 3px;
 }
-.sheets-container::-webkit-scrollbar { width: 4px; }
-.sheets-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.sheets-nav::-webkit-scrollbar { width: 3px; }
+.sheets-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 6px; }
 
-.sheet-tab {
-  padding: 10px 12px; border-radius: 10px; cursor: pointer;
-  font-weight: 700; font-size: 13px; color: var(--text-muted);
+.sheet-link {
+  padding: 9px 12px; border-radius: 8px; cursor: pointer;
+  font-weight: 700; font-size: 12px; color: var(--text-muted);
   display: flex; align-items: center; justify-content: flex-start; text-align: right;
-  transition: all 0.2s ease; border: 1px solid transparent;
+  transition: all 0.15s ease; border: 1px solid transparent;
 }
-.sheet-tab[dir="ltr"] { direction: ltr; justify-content: flex-start; text-align: left; }
-.sheet-tab:hover { background: var(--hover-bg); color: var(--text-main); }
-.sheet-tab.active {
-  background: var(--active-bg); color: var(--active-text);
-  border-color: rgba(37,99,235,0.2);
+.sheet-link[dir="ltr"] { direction: ltr; justify-content: flex-start; text-align: left; }
+.sheet-link:hover { background: var(--bg-surface); color: var(--text-main); }
+.sheet-link.active {
+  background: var(--accent-light); color: var(--accent);
+  border-color: rgba(59,130,246,0.2);
 }
 
-/* منطقة الكروت الرئيسية (3 كروت بجانب بعض) */
-.main-content { flex: 1; margin-right: 324px; }
-.cards-grid {
-  display: grid; gap: 16px;
+/* منطقة الكروت (3 بجانب بعض بنظام الشبكة الاحترافي) */
+.content-area { flex: 1; margin-right: 300px; }
+.cards-container {
+  display: grid; gap: 14px;
   grid-template-columns: 1fr;
 }
-@media (min-width: 800px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1250px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 850px) { .cards-container { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1250px) { .cards-container { grid-template-columns: repeat(3, 1fr); } }
 
 @media (max-width: 768px) {
-  .layout { flex-direction: column-reverse; padding-top: 50px; }
-  .sidebar { position: relative; top: auto; right: auto; width: 100%; height: auto; max-height: 40vh; margin-bottom: 16px; }
-  .main-content { margin-right: 0; }
+  .app-layout { flex-direction: column-reverse; padding-top: 45px; }
+  .sidebar-panel { position: relative; top: auto; right: auto; width: 100%; height: auto; max-height: 35vh; margin-bottom: 14px; }
+  .content-area { margin-right: 0; }
 }
 
-/* تصميم الكارت الاحترافي */
-.canned-card {
-  background: var(--surface); border-radius: 14px;
-  border: 1px solid var(--border); box-shadow: var(--shadow);
+/* تصميم الكارت الاحترافي الجديد */
+.pro-card {
+  background: var(--bg-card); border-radius: 12px;
+  border: 1px solid var(--border-color); box-shadow: var(--shadow);
   display: flex; flex-direction: column; overflow: hidden; cursor: pointer;
-  min-height: 180px; transition: all 0.25s ease; opacity: 0; transform: translateY(6px);
+  min-height: 170px; transition: all 0.2s ease; opacity: 0; transform: translateY(4px);
 }
-.canned-card.show { opacity: 1; transform: translateY(0); }
-.canned-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 99, 235, 0.35);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.card-header-title {
-  background: var(--card-header); padding: 10px 14px;
-  text-align: center; font-weight: 800; font-size: 13px; color: var(--text-main);
-  border-bottom: 1px solid var(--border);
+.pro-card.show { opacity: 1; transform: translateY(0); }
+.pro-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-hover);
 }
 
-.card-body-frame {
-  padding: 12px; flex: 1; display: flex; flex-direction: column;
+.pro-card-header {
+  background: var(--bg-surface); padding: 9px 12px;
+  text-align: center; font-weight: 800; font-size: 12px; color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
 }
-.card-text-box {
-  background: var(--frame-bg); border-radius: 10px; padding: 12px;
-  flex: 1; color: var(--text-main); font-size: 13px; line-height: 1.6;
-  border: 1px solid var(--border); font-weight: 500;
+
+.pro-card-body {
+  padding: 10px; flex: 1; display: flex; flex-direction: column;
+}
+.pro-card-text {
+  background: var(--bg-app); border-radius: 8px; padding: 10px;
+  flex: 1; color: var(--text-main); font-size: 12px; line-height: 1.6;
+  border: 1px solid var(--border-color); font-weight: 500;
   display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
 }
 
-.card-footer-info {
-  padding: 8px 12px; font-size: 11px; color: var(--text-muted);
-  text-align: left; direction: ltr; border-top: 1px solid var(--border);
+.pro-card-footer {
+  padding: 7px 12px; font-size: 10px; color: var(--text-muted);
+  text-align: left; direction: ltr; border-top: 1px solid var(--border-color);
   font-weight: 700; transition: background 0.2s, color 0.2s;
 }
-.card-footer-info.copied {
+.pro-card-footer.copied {
   background: var(--success); color: #fff; text-align: center; direction: rtl;
 }
 
-.empty-state {
-  grid-column: 1 / -1; text-align: center; padding: 50px;
-  background: var(--surface); border-radius: 14px; border: 1px solid var(--border);
-  color: var(--text-muted); font-weight: 700; font-size: 14px;
+.empty-notice {
+  grid-column: 1 / -1; text-align: center; padding: 40px;
+  background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-color);
+  color: var(--text-muted); font-weight: 700; font-size: 13px;
 }
 
 /* الشريط السفلي */
-.footer-bottom {
-  position: fixed; bottom: 0; left: 0; right: 0; height: 26px;
-  background: var(--surface); border-top: 1px solid var(--border);
+.app-footer {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 24px;
+  background: var(--bg-sidebar); border-top: 1px solid var(--border-color);
   display: flex; align-items: center; justify-content: center; z-index: 90;
 }
-.footer-bottom span { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+.app-footer span { font-size: 10px; font-weight: 600; color: var(--text-muted); }
 </style>
 </head>
 <body data-theme="dark">
 
-<!-- شاشة الباسورد -->
+<!-- شاشة تسجيل الدخول -->
 <div id="customLoginOverlay">
-  <div class="login-card">
+  <div class="login-box">
     <div class="login-icon">🔒</div>
     <div class="login-title">Canned Workspace</div>
-    <div class="login-sub">أدخل كلمة المرور للمتابعة إلى لوحة العمل</div>
+    <div class="login-sub">أدخل كلمة المرور للوصول إلى اللوحة</div>
     <input type="password" id="loginPwd" class="login-input" placeholder="••••••••" autocomplete="off">
     <button id="loginBtn" class="login-btn">دخول</button>
     <div id="loginMsg"></div>
@@ -263,44 +262,44 @@ html, body {
   <div class="splash" id="splashScreen">
     <div class="splash-content">
       <div class="spinner">⚙️</div>
-      <div style="font-weight: 700; font-size: 14px; color: var(--text-main);">جاري تجهيز الكاندات...</div>
+      <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">جاري تحميل لوحة العمل...</div>
     </div>
   </div>
 
-  <!-- الشريط المتحرك العلوي -->
-  <header class="header-bar">
-    <div class="marquee">
+  <!-- الشريط العلوي -->
+  <header class="top-ticker">
+    <div class="ticker-content">
       <span>⚠️ تذكر دائماً: استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️ &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚫 في حال وجود bulk canned يجب تقسيم الكاند في الشات 🚫</span>
     </div>
   </header>
 
   <!-- زر تبديل الثيم -->
-  <button class="theme-btn" id="themeToggle">🌙 الوضع الهادئ</button>
+  <button class="theme-switch" id="themeToggle">🌙 الهادئ</button>
 
-  <!-- التخطيط العام -->
-  <div class="layout">
+  <!-- تخطيط الشاشة -->
+  <div class="app-layout">
     
     <!-- القائمة الجانبية (يمين) -->
-    <aside class="sidebar">
-      <div class="search-wrapper">
-        <span style="font-size: 12px;">🔍</span>
-        <input type="text" id="searchInput" placeholder="بحث سريع في الأقسام...">
+    <aside class="sidebar-panel">
+      <div class="search-container">
+        <span style="font-size: 11px;">🔍</span>
+        <input type="text" id="searchInput" placeholder="بحث سريع...">
       </div>
-      <div class="sheets-container" id="sheetsListContainer"></div>
+      <div class="sheets-nav" id="sheetsNavContainer"></div>
     </aside>
 
     <!-- منطقة الكروت (3 بجانب بعض) -->
-    <main class="main-content">
-      <div class="cards-grid" id="cardsGridContainer">
-        <div class="empty-state">اختر قسماً من القائمة الجانبية للبدء 🚀</div>
+    <main class="content-area">
+      <div class="cards-container" id="cardsGridContainer">
+        <div class="empty-notice">اختر قسماً من القائمة الجانبية للبدء 🚀</div>
       </div>
     </main>
 
   </div>
 
-  <!-- الشريط السفلي الثابت -->
-  <footer class="footer-bottom">
-    <span>Designed and Developed By : Geek © 2025–2026 — Version 5.3.0</span>
+  <!-- الشريط السفلي -->
+  <footer class="app-footer">
+    <span>Designed and Developed By : Geek © 2025–2026 — Version 5.4.0</span>
   </footer>
 
 </div>
@@ -321,12 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleLogin() {
     if (pwdInput.value === PASS) {
       overlay.style.opacity = '0';
-      setTimeout(() => overlay.style.display = 'none', 400);
+      setTimeout(() => overlay.style.display = 'none', 300);
       protectedApp.style.display = 'block';
-      setTimeout(() => protectedApp.style.opacity = '1', 50);
+      setTimeout(() => protectedApp.style.opacity = '1', 30);
       sessionStorage.setItem('auth_granted', 'true');
     } else {
-      loginMsg.textContent = 'كلمة المرور غير صحيحة، حاول مجدداً';
+      loginMsg.textContent = 'كلمة المرور غير صحيحة';
       pwdInput.value = '';
       pwdInput.focus();
     }
@@ -341,9 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
     protectedApp.style.opacity = '1';
   }
 
-  // --- منطق التطبيق الذكي ---
+  // --- محرك البيانات والواجهة ---
   const splash = document.getElementById('splashScreen');
-  const sheetsContainer = document.getElementById('sheetsListContainer');
+  const sheetsNav = document.getElementById('sheetsNavContainer');
   const cardsGrid = document.getElementById('cardsGridContainer');
   const searchInput = document.getElementById('searchInput');
   const themeToggle = document.getElementById('themeToggle');
@@ -354,17 +353,17 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     splash.style.opacity = '0';
     setTimeout(() => splash.style.display = 'none', 300);
-  }, 600);
+  }, 500);
 
-  // التحكم في الثيم
+  // تبديل الثيم
   themeToggle.addEventListener('click', () => {
     const current = document.body.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', next);
-    themeToggle.textContent = next === 'dark' ? '🌙 الوضع الهادئ' : '☀️ الوضع المضيء';
+    themeToggle.textContent = next === 'dark' ? '🌙 الهادئ' : '☀️ المضيء';
   });
 
-  // جلب وقراءة ملف الاكسيل
+  // جلب الملف
   fetch('candat_data.xlsx')
     .then(res => {
       if (!res.ok) throw new Error('File missing');
@@ -375,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
       processWorkbook(workbook);
     })
     .catch(() => {
-      cardsGrid.innerHTML = '<div class="empty-state">⚠️ تعذر العثور على ملف البيانات (candat_data.xlsx). تأكد من وجوده بجوار الصفحة.</div>';
+      cardsGrid.innerHTML = '<div class="empty-notice">⚠️ تعذر العثور على ملف البيانات (candat_data.xlsx). تأكد من وضعه في نفس المجلد.</div>';
     });
 
   function processWorkbook(wb) {
@@ -399,14 +398,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderSidebar(sheetNames) {
-    sheetsContainer.innerHTML = '';
+    sheetsNav.innerHTML = '';
     sheetNames.forEach(name => {
-      const tab = document.createElement('div');
-      tab.className = 'sheet-tab';
-      tab.textContent = name;
-      if (/^[a-zA-Z &0-9]+$/.test(name)) tab.setAttribute('dir', 'ltr');
-      tab.addEventListener('click', () => loadSheetCards(name));
-      sheetsContainer.appendChild(tab);
+      const link = document.createElement('div');
+      link.className = 'sheet-link';
+      link.textContent = name;
+      if (/^[a-zA-Z &0-9]+$/.test(name)) link.setAttribute('dir', 'ltr');
+      link.addEventListener('click', () => loadSheetCards(name));
+      sheetsNav.appendChild(link);
     });
   }
 
@@ -415,9 +414,9 @@ document.addEventListener("DOMContentLoaded", () => {
     activeSheetName = sheetName;
     searchInput.value = '';
     
-    document.querySelectorAll('.sheet-tab').forEach(el => el.classList.remove('active'));
-    const matchedTab = [...sheetsContainer.children].find(el => el.textContent === sheetName);
-    if (matchedTab) matchedTab.classList.add('active');
+    document.querySelectorAll('.sheet-link').forEach(el => el.classList.remove('active'));
+    const matchedLink = [...sheetsNav.children].find(el => el.textContent === sheetName);
+    if (matchedLink) matchedLink.classList.add('active');
 
     renderCardsList(excelDataMap[sheetName] || []);
   }
@@ -425,21 +424,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderCardsList(items) {
     cardsGrid.innerHTML = '';
     if (!items || items.length === 0) {
-      cardsGrid.innerHTML = '<div class="empty-state">لا توجد بيانات متاحة في هذا القسم حالياً.</div>';
+      cardsGrid.innerHTML = '<div class="empty-notice">لا توجد بيانات متاحة في هذا القسم.</div>';
       return;
     }
 
     items.forEach((item, index) => {
       const card = document.createElement('div');
-      card.className = 'canned-card';
+      card.className = 'pro-card';
       const formattedContent = item.content.replace(/\n/g, '<br>');
 
       card.innerHTML = `
-        <div class="card-header-title">${item.name}</div>
-        <div class="card-body-frame">
-          <div class="card-text-box">${formattedContent}</div>
+        <div class="pro-card-header">${item.name}</div>
+        <div class="pro-card-body">
+          <div class="pro-card-text">${formattedContent}</div>
         </div>
-        <div class="card-footer-info" data-original="Sheet: ${item.sheet}">Sheet: ${item.sheet}</div>
+        <div class="pro-card-footer" data-original="Sheet: ${item.sheet}">Sheet: ${item.sheet}</div>
       `;
 
       card.addEventListener('click', () => {
@@ -453,22 +452,22 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.removeChild(t);
         });
 
-        const footer = card.querySelector('.card-footer-info');
+        const footer = card.querySelector('.pro-card-footer');
         const originalText = footer.getAttribute('data-original');
         footer.textContent = '✅ تم النسخ بنجاح';
         footer.classList.add('copied');
         setTimeout(() => {
           footer.textContent = originalText;
           footer.classList.remove('copied');
-        }, 1500);
+        }, 1400);
       });
 
       cardsGrid.appendChild(card);
-      setTimeout(() => card.classList.add('show'), index * 20);
+      setTimeout(() => card.classList.add('show'), index * 15);
     });
   }
 
-  // محرك البحث الفوري
+  // البحث الفوري
   searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim().toLowerCase();
     if (!query) {
@@ -476,7 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    document.querySelectorAll('.sheet-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.sheet-link').forEach(el => el.classList.remove('active'));
     let searchResults = [];
     Object.keys(excelDataMap).forEach(sheet => {
       excelDataMap[sheet].forEach(item => {
@@ -488,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     cardsGrid.innerHTML = '';
     if (searchResults.length === 0) {
-      cardsGrid.innerHTML = `<div class="empty-state">لا توجد نتائج مطابقة لـ "${query}"</div>`;
+      cardsGrid.innerHTML = `<div class="empty-notice">لا توجد نتائج مطابقة لـ "${query}"</div>`;
       return;
     }
     renderCardsList(searchResults);
