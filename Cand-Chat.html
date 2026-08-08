@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent: #3b82f6;
-  --success: #10b981;
+  --accent: #2563eb;
+  --success: #059669;
   --sidebar-w: 310px;
 }
 [data-theme="light"]{
@@ -17,8 +17,8 @@
   --muted: #475569;
   --text: #0f172a;
   --border-color: #cbd5e1;
-  --shadow-color: rgba(0, 0, 0, 0.06);
-  --shadow-hover: rgba(59, 130, 246, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(37, 99, 235, 0.12);
   --search-bg: #e2e8f0;
   --scrollbar: #94a3b8;
   --item-hover: #e2e8f0;
@@ -28,20 +28,21 @@
   --frame-bg: #f8fafc;
 }
 [data-theme="dark"]{
-  --bg1: #0b0f19;
-  --card: #131b2e;
+  /* درجة لون مريحة جداً للعين: رمادي داكن هادئ مائل للازرقاق غير مزعج */
+  --bg1: #1a2234;
+  --card: #242f45;
   --muted: #94a3b8;
-  --text: #f8fafc;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --shadow-hover: rgba(59, 130, 246, 0.25);
-  --search-bg: #090d16;
-  --scrollbar: #22304a;
-  --item-hover: #1a253f;
-  --active-bg: rgba(59, 130, 246, 0.15);
+  --text: #f1f5f9;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --shadow-hover: rgba(59, 130, 246, 0.2);
+  --search-bg: #161d2d;
+  --scrollbar: #334155;
+  --item-hover: #2c3854;
+  --active-bg: rgba(59, 130, 246, 0.2);
   --active-text: #60a5fa;
-  --card-title-bg: #0f1626;
-  --frame-bg: #090d16;
+  --card-title-bg: #1e273b;
+  --frame-bg: #161d2d;
 }
 
 html,body{
@@ -60,7 +61,7 @@ html,body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #05070a;
+  background: #111827;
   z-index: 999999;
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
@@ -69,10 +70,10 @@ html,body{
   position: relative;
   width: 340px;
   padding: 36px 28px 28px;
-  background: #131b2e;
+  background: #242f45;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -110,7 +111,7 @@ html,body{
   padding: 0 16px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #090d16;
+  background: #161d2d;
   color: #f8fafc;
   outline: none;
   font-size: 14px;
@@ -166,7 +167,7 @@ background:var(--bg1);transition:opacity .4s ease;}
 .loader-text { font-weight: 800; color: var(--text); font-size: 16px; }
 
 .header-wrap{position:fixed;top:0;left:0;right:0;height:40px;display:flex;align-items:center;z-index:200;
-background:#0f172a;border-bottom:1px solid var(--border-color);}
+background:#161d2d;border-bottom:1px solid var(--border-color);}
 .marquee{overflow:hidden;white-space:nowrap;width:100%;padding:4px 18px;}
 .marquee .text{display:inline-block;white-space:nowrap;font-weight:700;color:#cbd5e1;font-size:12px;
 animation:moveLeft 20s linear infinite;}
@@ -180,7 +181,7 @@ backdrop-filter: blur(4px); transition: all .2s ease;}
 
 .app{display:flex;flex-direction:row-reverse;gap:20px; padding: 56px 20px 50px 20px; max-width:1600px; margin:0 auto;box-sizing:border-box;}
 
-/* Sidebar - قائمة مرتبة وواضحة جداً */
+/* Sidebar */
 .sidebar{
   position: fixed; 
   top: 48px; 
@@ -221,7 +222,7 @@ backdrop-filter: blur(4px); transition: all .2s ease;}
   width: 100%; box-sizing: border-box;
 }
 .sheet-item[dir="ltr"] { direction: ltr; justify-content: flex-start; text-align: left; }
-.sheet-item:hover { background: var(--item-hover); color: var(--accent); }
+.sheet-item:hover { background: var(--item-hover); color: var(--active-text); }
 .sheet-item.active{
   background: var(--active-bg); border-color: rgba(59, 130, 246, 0.4); color: var(--active-text);
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
@@ -272,7 +273,7 @@ backdrop-filter: blur(4px); transition: all .2s ease;}
 .empty{ grid-column: 1 / -1; text-align:center; padding:40px; color:var(--muted); background:var(--card); border-radius:14px; border: 1px solid var(--border-color); font-weight: 700; }
 
 .footer-wrapper{position:fixed; left:0; right:0; bottom:0; z-index:100;}
-.footer-bar{height:28px; background:#0f172a; display:flex; align-items:center; justify-content:center; border-top:1px solid var(--border-color);}
+.footer-bar{height:28px; background:#161d2d; display:flex; align-items:center; justify-content:center; border-top:1px solid var(--border-color);}
 .footer-bar .text{color:var(--muted); font-weight:600; font-size:11px;}
 </style>
 </head>
