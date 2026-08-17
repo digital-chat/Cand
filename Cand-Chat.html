@@ -350,7 +350,16 @@ body{
 .search-box input{font-size:13px;padding:0 3px}
 .search-icon{font-size:14px;opacity:.75}
 .nav-label{text-align:center;font-size:11px;color:var(--muted);font-weight:800;padding:5px 9px 7px}
-.sheet-list{gap:5px;padding:0 2px;overflow-y:auto}
+.sheet-list{
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  gap:5px;
+  padding:0 2px;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  scrollbar-gutter:stable;
+  overscroll-behavior:contain;
+}
 .sheet-list::-webkit-scrollbar{width:6px}
 .sheet-list::-webkit-scrollbar-track{background:transparent}
 .sheet-list::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:20px}
@@ -1130,5 +1139,13 @@ document.addEventListener("DOMContentLoaded", () => {
     overflow-y:auto !important;
     overflow-x:hidden !important;
   }
+}
+
+/* ===== v4.2 Sidebar scroll fix ===== */
+.sidebar{height:calc(100vh - 138px) !important; min-height:0 !important; overflow:hidden !important;}
+.sidebar .sheet-list{flex:1 1 0 !important; min-height:0 !important; max-height:none !important; overflow-y:auto !important; overflow-x:hidden !important;}
+@media(max-width:900px){
+  .sidebar{height:auto !important; max-height:50vh !important; overflow:hidden !important;}
+  .sidebar .sheet-list{min-height:0 !important; overflow-y:auto !important;}
 }
 </style>
