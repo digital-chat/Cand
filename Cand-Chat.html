@@ -276,6 +276,61 @@ display:flex;align-items:center;justify-content:center;box-shadow:0 -4px 15px rg
 }
 
 #protectedApp{ display: none; opacity: 0; transition: opacity .6s ease; }
+
+/* ===== Canned Tool v2.0 UI Refresh ===== */
+:root{
+  --accent1:#8b5cf6; --accent2:#6d28d9; --accent3:#ec4899;
+  --success:#22c55e; --warn:#fbbf24; --sidebar-w:292px;
+  --radius:18px;
+}
+[data-theme="dark"]{
+  --bg1:#070b16; --bg2:#0d1322; --card:#10182a; --card2:#0b1120;
+  --muted:#8fa0b8; --text:#f8fafc; --border-color:rgba(148,163,184,.13);
+  --shadow-color:rgba(0,0,0,.25); --shadow-color-hover:rgba(124,58,237,.22);
+  --search-bg:#0a1020; --scrollbar-thumb:#334155; --scrollbar-track:transparent;
+}
+[data-theme="light"]{
+  --bg1:#f5f7fb; --bg2:#ffffff; --card:#ffffff; --card2:#f8fafc;
+  --muted:#64748b; --text:#172033; --border-color:#e7eaf0;
+  --shadow-color:rgba(15,23,42,.07); --shadow-color-hover:rgba(109,40,217,.16);
+  --search-bg:#f1f4f9; --scrollbar-thumb:#cbd5e1; --scrollbar-track:transparent;
+}
+html,body{background:
+  radial-gradient(circle at 78% 12%, rgba(124,58,237,.12), transparent 26%),
+  radial-gradient(circle at 8% 90%, rgba(236,72,153,.07), transparent 24%),var(--bg1);}
+.header-wrap{height:58px;background:rgba(7,11,22,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-color);box-shadow:0 8px 30px rgba(0,0,0,.18);}
+[data-theme="light"] .header-wrap{background:rgba(255,255,255,.88);}
+.marquee{display:none}
+.theme-toggle{left:20px;top:10px;width:40px;height:40px;border:1px solid var(--border-color);background:var(--card);box-shadow:0 8px 20px var(--shadow-color);font-size:18px;}
+.header-brand{position:absolute;right:28px;top:8px;display:flex;align-items:center;gap:12px;direction:ltr;}
+.brand-mark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:20px;background:linear-gradient(135deg,var(--accent1),var(--accent3));box-shadow:0 8px 25px rgba(139,92,246,.28);}
+.brand-copy{direction:rtl;text-align:right;line-height:1.1}.brand-copy strong{display:block;color:var(--text);font-size:17px}.brand-copy span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.app{max-width:1700px;gap:24px;padding:82px 24px 76px;}
+.sidebar{top:78px;right:24px;width:var(--sidebar-w);height:calc(100vh - 154px);margin-right:0;padding:18px 12px;background:linear-gradient(180deg,rgba(16,24,42,.96),rgba(11,17,32,.96));border:1px solid var(--border-color);border-radius:20px;box-shadow:0 18px 45px rgba(0,0,0,.22);}
+[data-theme="light"] .sidebar{background:rgba(255,255,255,.94)}
+.sidebar-top{padding:2px 6px 14px}.sidebar-title{display:flex;justify-content:space-between;align-items:center;color:var(--text);font-weight:800;font-size:15px}.tool-count{font-size:11px;color:var(--muted);background:var(--bg1);border:1px solid var(--border-color);padding:4px 8px;border-radius:999px}
+.search-box{height:44px;margin:0 4px 14px;padding:0 12px;border-radius:13px;background:var(--search-bg);border:1px solid var(--border-color)}.search-box input{font-size:13px}.search-icon{font-size:16px}
+.nav-label{font-size:11px;color:var(--muted);font-weight:800;padding:8px 10px 6px;text-transform:uppercase;letter-spacing:.5px}
+.sheet-list{gap:6px;padding:0 3px;}
+.sheet-item{min-height:44px;margin:0;padding:0 12px;border:1px solid transparent;border-radius:12px;font-size:13px;font-weight:700;position:relative;}
+.sheet-item:hover{background:rgba(139,92,246,.09);transform:none;border-color:rgba(139,92,246,.12)}
+.sheet-item.active{background:linear-gradient(90deg,rgba(139,92,246,.22),rgba(236,72,153,.08));border-color:rgba(139,92,246,.28);box-shadow:inset -3px 0 0 var(--accent1);}
+.sheet-item::before{content:'◈';color:var(--accent1);margin-left:9px;font-size:11px;opacity:.8}.sheet-item[dir="ltr"]::before{margin-right:9px;margin-left:0}
+.sidebar-bottom{margin-top:auto;padding:12px 6px 2px}.privacy-tip{border:1px solid var(--border-color);background:var(--card2);border-radius:14px;padding:11px;font-size:11px;color:var(--muted);line-height:1.6}.privacy-tip b{color:var(--text);display:block;margin-bottom:3px}
+.main{margin-right:calc(var(--sidebar-w) + 24px);padding-top:0;min-width:0;}
+.hero{position:relative;overflow:hidden;border:1px solid rgba(139,92,246,.24);border-radius:22px;padding:28px 30px;margin-bottom:22px;background:linear-gradient(115deg,rgba(58,24,104,.55),rgba(12,18,34,.92) 58%,rgba(16,24,42,.96));box-shadow:0 20px 50px rgba(0,0,0,.18)}
+[data-theme="light"] .hero{background:linear-gradient(115deg,#f1eaff,#fff 58%,#f8fafc)}
+.hero::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;left:-100px;top:-140px;background:radial-gradient(circle,rgba(236,72,153,.2),transparent 68%);pointer-events:none}.hero-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;z-index:1}.hero-copy{max-width:650px}.eyebrow{color:#c4b5fd;font-size:12px;font-weight:800;margin-bottom:8px}.hero h1{margin:0;color:var(--text);font-size:30px;letter-spacing:-.5px}.hero h1 span{color:#a78bfa}.hero p{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.8}.hero-icon{width:110px;height:110px;border-radius:28px;display:grid;place-items:center;font-size:52px;background:linear-gradient(145deg,rgba(139,92,246,.25),rgba(236,72,153,.12));border:1px solid rgba(167,139,250,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 18px 40px rgba(124,58,237,.15)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.stat{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07)}[data-theme="light"] .stat{background:rgba(109,40,217,.035);border-color:var(--border-color)}.stat b{display:block;color:var(--text);font-size:18px}.stat span{color:var(--muted);font-size:10px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:0 2px 12px}.section-head h2{margin:0;color:var(--text);font-size:19px}.section-head span{font-size:11px;color:var(--muted)}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{min-height:190px;border-radius:17px;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border-color);box-shadow:0 8px 22px var(--shadow-color);}.card:hover{transform:translateY(-4px);box-shadow:0 18px 35px var(--shadow-color-hover);border-color:rgba(139,92,246,.28)}.card-title{font-size:15px;padding:14px 14px;text-align:right;color:var(--text);border-bottom:1px solid var(--border-color);}.card-title::before{content:'✦';color:#a78bfa;margin-left:7px}.card-content{padding:13px}.frame{background:rgba(139,92,246,.045);border:1px solid rgba(139,92,246,.08);border-radius:11px;padding:11px;font-size:12px;line-height:1.8;-webkit-line-clamp:7}.card-footer{padding:10px 13px;font-size:11px}.card-footer.copied{background:linear-gradient(90deg,#15803d,#22c55e)}
+.empty{padding:60px 30px;border-radius:18px;background:var(--card);border:1px dashed var(--border-color);font-size:13px}
+.footer-wrapper{background:transparent;bottom:10px;padding:0 24px}.footer-bar{max-width:1700px;margin:auto;height:40px;border-radius:14px;background:rgba(10,15,28,.82);border:1px solid var(--border-color);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.15)}[data-theme="light"] .footer-bar{background:rgba(255,255,255,.9)}.footer-bar .text{font-size:11px;color:var(--muted)}
+.quick-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.quick-btn{border:1px solid var(--border-color);background:var(--card);color:var(--muted);border-radius:11px;padding:8px 12px;font-family:inherit;font-size:11px;cursor:pointer;transition:.2s}.quick-btn:hover{color:var(--text);border-color:rgba(139,92,246,.35);transform:translateY(-1px)}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-icon{display:none}}
+@media(max-width:900px){.app{padding:78px 14px 74px}.sidebar{position:relative;top:auto;right:auto;width:auto;height:auto;max-height:none;margin:0 0 18px;padding:14px}.main{margin-right:0}.sidebar-bottom{display:none}.sheet-list{max-height:220px}.header-brand{right:16px}.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero{padding:22px 18px}.hero h1{font-size:24px}.stats{grid-template-columns:1fr}.footer-wrapper{padding:0 10px}.footer-bar .text{font-size:10px}}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -309,42 +364,62 @@ display:flex;align-items:center;justify-content:center;box-shadow:0 -4px 15px rg
 
 <!-- Header -->
 <div class="header-wrap">
-  <div class="marquee">
-    <span class="text">
-      ⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️
-🚫 في حال وجود bulk canned يجب تقسيم الكاند في الشات 🚫
-    </span>
+  <div class="header-brand">
+    <div class="brand-mark">C</div>
+    <div class="brand-copy"><strong>Canned Tool <span style="display:inline;color:#a78bfa">v2.0</span></strong><span>مساعد أدوات الدعم السريع</span></div>
   </div>
 </div>
 
-<!-- Theme Toggle -->
-<button class="theme-toggle" id="themeToggle">🌙</button>
+<button class="theme-toggle" id="themeToggle" title="تغيير المظهر">🌙</button>
 
-<!-- Layout Wrapper -->
 <div class="app">
-  <!-- Sidebar -->
-  <div class="sidebar">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-title"><span>الأدوات والشيتات</span><span class="tool-count" id="toolCount">0</span></div>
+    </div>
     <div class="search-box">
-      <span style="color: var(--muted); font-size: 18px;">🔍</span>
-      <input type="text" id="searchInput" placeholder="search here...">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="ابحث في الكاند..." autocomplete="off">
     </div>
+    <div class="nav-label">Sheets</div>
     <div class="sheet-list" id="sheetList"></div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main">
-    <div class="grid" id="cardsGrid">
-      <div class="empty">اختر شيت من القائمة للبدء 🚀</div>
+    <div class="sidebar-bottom">
+      <div class="privacy-tip"><b>💡 نصيحة</b>كل العمليات تتم محليًا على جهازك. لا تحفظ الأداة بياناتك على خادم خارجي.</div>
     </div>
-  </div>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">SMART SUPPORT TOOLKIT</div>
+          <h1>مرحبًا بك في <span>Canned Tool</span> 👋</h1>
+          <p>مجموعة أدوات سريعة تساعدك في الوصول للكاند، البحث، والنسخ بأقل عدد ممكن من الخطوات.</p>
+          <div class="stats">
+            <div class="stat"><b id="statSheets">0</b><span>شيت متاح</span></div>
+            <div class="stat"><b id="statCans">0</b><span>كاند محمل</span></div>
+            <div class="stat"><b>100%</b><span>استخدام محلي</span></div>
+          </div>
+        </div>
+        <div class="hero-icon">🧰</div>
+      </div>
+    </section>
+
+    <div class="quick-bar">
+      <button class="quick-btn" id="clearSearch">↺ عرض الكل</button>
+      <button class="quick-btn" id="copyLast" disabled>📋 نسخ آخر نتيجة</button>
+      <button class="quick-btn" id="focusSearch">⌕ بحث سريع</button>
+    </div>
+
+    <div class="section-head">
+      <div><h2 id="sectionTitle">اختر شيت للبدء</h2><span id="sectionMeta">الكاندات المتاحة</span></div>
+      <span id="resultCount"></span>
+    </div>
+    <div class="grid" id="cardsGrid"><div class="empty">جارٍ تحميل البيانات... ⏳</div></div>
+  </main>
 </div>
 
-<!-- Footer -->
-<div class="footer-wrapper">
-  <div class="footer-bar">
-    <div class="text">Designed and Developed By : Geek © 2025–2026 — Version 5.0.1</div>
-  </div>
-</div>
+<div class="footer-wrapper"><div class="footer-bar"><div class="text">Designed & Developed By : Geek ❤️ — Canned Tool v2.0 — 2025–2026</div></div></div>
 
 <!-- Click sound -->
 <audio id="clickSound" preload="auto">
@@ -392,165 +467,140 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const clickSound = document.getElementById("clickSound");
   const themeToggle = document.getElementById("themeToggle");
+  const toolCount = document.getElementById("toolCount");
+  const statSheets = document.getElementById("statSheets");
+  const statCans = document.getElementById("statCans");
+  const sectionTitle = document.getElementById("sectionTitle");
+  const resultCount = document.getElementById("resultCount");
+  const clearSearch = document.getElementById("clearSearch");
+  const copyLast = document.getElementById("copyLast");
+  const focusSearch = document.getElementById("focusSearch");
 
   let workbookData = {};
   let currentSheet = null;
+  let lastCopied = '';
 
-  setTimeout(() => splash.style.opacity = "0", 800);
-  setTimeout(() => splash.style.display = "none", 1200);
+  const savedTheme = localStorage.getItem('candat_theme') || 'dark';
+  document.body.setAttribute('data-theme', savedTheme);
+  themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+  setTimeout(() => splash.style.opacity = "0", 700);
+  setTimeout(() => splash.style.display = "none", 1100);
 
   themeToggle.addEventListener("click", () => {
-    const current = document.body.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
+    const next = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
     document.body.setAttribute("data-theme", next);
     themeToggle.textContent = next === "dark" ? "🌙" : "☀️";
+    localStorage.setItem('candat_theme', next);
   });
 
+  focusSearch.addEventListener('click', () => { searchInput.focus(); searchInput.select(); });
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    if (currentSheet) showSheet(currentSheet); else renderCards([]);
+  });
+  copyLast.addEventListener('click', () => { if (lastCopied) copyText(lastCopied); });
+
   fetch('candat_data.xlsx')
-    .then(resp => {
-      if (!resp.ok) throw new Error("File not found");
-      return resp.arrayBuffer();
-    })
-    .then(buffer => {
-      const wb = XLSX.read(buffer, { type: "array" });
-      handleWorkbook(wb);
-    })
-    .catch((error) => {
-        cardsGrid.innerHTML = '<div class="empty">⚠️ خطأ: لم يتم العثور على ملف البيانات (candat_data.xlsx).</div>';
-        console.error("Error loading data file:", error);
+    .then(resp => { if (!resp.ok) throw new Error("File not found"); return resp.arrayBuffer(); })
+    .then(buffer => { const wb = XLSX.read(buffer, { type: "array" }); handleWorkbook(wb); })
+    .catch(error => {
+      cardsGrid.innerHTML = '<div class="empty">⚠️ لم يتم العثور على ملف البيانات <b>candat_data.xlsx</b>.</div>';
+      console.error("Error loading data file:", error);
     });
 
   function handleWorkbook(wb) {
     workbookData = {};
+    let total = 0;
     wb.SheetNames.forEach(name => {
-      const ws = wb.Sheets[name];
-      const rows = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      const rows = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1 });
       const items = [];
       for (let i = 1; i < rows.length; i++) {
-        if (rows[i] && rows[i][0] && rows[i][1]) {
-          items.push({ name: String(rows[i][0]), content: String(rows[i][1]), sheet: name });
-        }
+        if (rows[i] && rows[i][0] && rows[i][1]) items.push({ name:String(rows[i][0]), content:String(rows[i][1]), sheet:name });
       }
       workbookData[name] = items;
+      total += items.length;
     });
+    toolCount.textContent = wb.SheetNames.length;
+    statSheets.textContent = wb.SheetNames.length;
+    statCans.textContent = total;
     renderSheetList(wb.SheetNames);
-    if (wb.SheetNames.length > 0) {
-        showSheet(wb.SheetNames[0]);
-    } else {
-        cardsGrid.innerHTML = '<div class="empty">الملف فارغ أو لا يحتوي على شيتات قابلة للعرض.</div>';
-    }
+    if (wb.SheetNames.length) showSheet(wb.SheetNames[0]);
+    else cardsGrid.innerHTML = '<div class="empty">الملف فارغ أو لا يحتوي على شيتات قابلة للعرض.</div>';
   }
 
   function renderSheetList(names) {
-    sheetList.innerHTML = "";
+    sheetList.innerHTML = '';
     names.forEach(name => {
-      const btn = document.createElement("div");
-      btn.className = "sheet-item";
+      const btn = document.createElement('div');
+      btn.className = 'sheet-item';
       btn.textContent = name;
-      
-      // *** MODIFICATION: Detect if text is primarily English and set direction ***
-      // A simple regex to check for English characters.
-      if (/^[a-zA-Z &]+$/.test(name)) {
-          btn.setAttribute('dir', 'ltr');
-      }
-
-      btn.addEventListener("click", () => showSheet(name));
+      if (/^[a-zA-Z0-9 &_-]+$/.test(name)) btn.setAttribute('dir','ltr');
+      btn.addEventListener('click', () => showSheet(name));
       sheetList.appendChild(btn);
     });
   }
 
   function showSheet(name) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+    window.scrollTo({top:0,behavior:'smooth'});
     currentSheet = name;
     searchInput.value = '';
-    document.querySelectorAll(".sheet-item").forEach(el => el.classList.remove("active"));
-    const activeSheetElement = [...sheetList.children].find(el => el.textContent === name);
-    if (activeSheetElement) {
-        activeSheetElement.classList.add("active");
-    }
+    document.querySelectorAll('.sheet-item').forEach(el => el.classList.toggle('active', el.textContent === name));
+    sectionTitle.textContent = name;
     renderCards(workbookData[name] || []);
   }
 
   function renderCards(items) {
-    cardsGrid.innerHTML = "";
+    cardsGrid.innerHTML = '';
+    const query = searchInput.value.trim();
+    resultCount.textContent = `${items.length} نتيجة`;
     if (!items || !items.length) {
-      const query = searchInput.value.trim();
-      const message = query ? `لا توجد نتائج مطابقة لبحثك عن: "${query}" 🔍` : `هذا الشيت فارغ. 📂`;
-      cardsGrid.innerHTML = `<div class="empty">${message}</div>`;
+      cardsGrid.innerHTML = `<div class="empty">${query ? `لا توجد نتائج مطابقة لبحثك عن: <b>"${escapeHtml(query)}"</b> 🔍` : 'اختر شيت من القائمة للبدء 🚀'}</div>`;
       return;
     }
-    items.forEach((item, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const displayContent = item.content.replace(/\n/g, "<br>");
-
-      card.innerHTML = `
-        <div class="card-title">${item.name}</div>
-        <div class="card-content">
-          <div class="frame">${displayContent}</div>
-        </div>
-        <div class="card-footer" data-original-text="📄 من شيت: ${item.sheet}">📄 من شيت: ${item.sheet}</div>`;
-
-      card.addEventListener("click", () => {
+    items.forEach((item,index) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const displayContent = escapeHtml(item.content).replace(/\n/g,'<br>');
+      card.innerHTML = `<div class="card-title">${escapeHtml(item.name)}</div><div class="card-content"><div class="frame">${displayContent}</div></div><div class="card-footer" data-original-text="📄 من شيت: ${escapeHtml(item.sheet)}">📄 اضغط لنسخ الكاند</div>`;
+      card.addEventListener('click', () => {
         const contentToCopy = item.content.replace(/\n/g, "\n<p>&nbsp;</p>\n");
+        lastCopied = contentToCopy;
+        copyLast.disabled = false;
         copyText(contentToCopy);
         playClick();
-        
         const footer = card.querySelector('.card-footer');
-        const originalText = footer.getAttribute('data-original-text');
-        footer.textContent = "✅ تم النسخ!";
-        footer.classList.add('copied');
-        setTimeout(() => {
-          footer.textContent = originalText;
-          footer.classList.remove('copied');
-        }, 1500);
+        const original = footer.getAttribute('data-original-text');
+        footer.textContent = '✅ تم النسخ إلى الحافظة'; footer.classList.add('copied');
+        setTimeout(() => { footer.textContent = original || '📄 اضغط لنسخ الكاند'; footer.classList.remove('copied'); }, 1500);
       });
-
       cardsGrid.appendChild(card);
-      setTimeout(() => card.classList.add("visible"), 50 + index * 30);
+      setTimeout(() => card.classList.add('visible'), 35 + index*20);
     });
   }
+
+  function escapeHtml(value){ return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 
   function copyText(text) {
-    navigator.clipboard.writeText(text).catch(err => {
-      console.warn("Clipboard API failed, falling back to execCommand.", err);
-      const temp = document.createElement("textarea");
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
+    navigator.clipboard.writeText(text).catch(() => {
+      const temp=document.createElement('textarea'); temp.value=text; document.body.appendChild(temp); temp.select(); document.execCommand('copy'); temp.remove();
     });
   }
+  function playClick(){ clickSound.currentTime=0; clickSound.play().catch(()=>{}); }
 
-  function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(e => console.log("Audio playback was prevented by the browser."));
-  }
-
-  searchInput.addEventListener("input", () => {
-    const q = (searchInput.value || '').trim().toLowerCase();
-
-    if (!q) {
-      if (currentSheet) showSheet(currentSheet);
-      return;
-    }
-    
-    document.querySelectorAll(".sheet-item").forEach(el => el.classList.remove("active"));
-    const results = [];
-    Object.keys(workbookData).forEach(sheetName => {
-      (workbookData[sheetName] || []).forEach(item => {
-        const hay = (item.name + ' ' + item.content).toLowerCase();
-        if (hay.includes(q)) {
-          results.push({ ...item, sheet: sheetName });
-        }
-      });
-    });
-    
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { if (currentSheet) showSheet(currentSheet); return; }
+    document.querySelectorAll('.sheet-item').forEach(el => el.classList.remove('active'));
+    const results=[];
+    Object.keys(workbookData).forEach(sheetName => (workbookData[sheetName] || []).forEach(item => {
+      const hay=(item.name+' '+item.content).toLowerCase();
+      if(hay.includes(q)) results.push({...item,sheet:sheetName});
+    }));
+    sectionTitle.textContent='نتائج البحث';
     renderCards(results);
   });
+
 });
 </script>
 
