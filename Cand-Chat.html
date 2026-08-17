@@ -1172,11 +1172,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-/* ===== v4.2 Sidebar scroll fix ===== */
-.sidebar{height:calc(100vh - 138px) !important; min-height:0 !important; overflow:hidden !important;}
-.sidebar .sheet-list{flex:1 1 0 !important; min-height:0 !important; max-height:none !important; overflow-y:auto !important; overflow-x:hidden !important;}
+/* ===== v4.5 Sidebar viewport height fix ===== */
+/* Sidebar reaches the bottom of the visible page; only the menu items scroll. */
+.sidebar{
+  top:42px !important;
+  bottom:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  overflow:hidden !important;
+}
+.sidebar .sheet-list{
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+}
 @media(max-width:900px){
-  .sidebar{height:auto !important; max-height:50vh !important; overflow:hidden !important;}
+  .sidebar{top:auto !important; bottom:auto !important; height:auto !important; max-height:50vh !important; overflow:hidden !important;}
   .sidebar .sheet-list{min-height:0 !important; overflow-y:auto !important;}
 }
 </style>
