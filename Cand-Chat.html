@@ -431,6 +431,24 @@ body{
 .card-title { color:#a78bfa !important; font-weight:800 !important; font-size:16px !important; letter-spacing:.1px; }
 .card-content, .card-content .frame, .card .frame { color:#ffffff !important; font-size:15px !important; line-height:1.9 !important; text-shadow:0 1px 1px rgba(0,0,0,.18); }
 .card-footer { color:#a5b4fc !important; font-weight:700; }
+
+/* v2.6 focused UI refinements */
+.header-wrap{height:46px;overflow:hidden;}
+.warning-marquee{position:absolute;left:190px;right:18px;height:100%;display:flex;align-items:center;overflow:hidden;direction:ltr;}
+.warning-track{display:inline-block;white-space:nowrap;color:#fff;font-weight:800;font-size:14px;letter-spacing:.15px;text-shadow:0 1px 2px rgba(0,0,0,.25);padding-left:100%;animation:warningMove 22s linear infinite;}
+@keyframes warningMove{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.sidebar-title{justify-content:center !important;}
+.sidebar-title > span:first-child{font-size:17px !important;font-weight:900 !important;letter-spacing:.2px;}
+.search-box{height:44px !important;border-radius:13px !important;padding:0 13px !important;}
+.search-box input{font-size:14px !important;}
+.card{height:235px !important;min-height:235px !important;display:flex !important;flex-direction:column !important;}
+.card-title{text-align:center !important;justify-content:center !important;font-size:17px !important;min-height:48px;box-sizing:border-box;}
+.card-title::before{display:none;}
+.card-content{min-height:0 !important;}
+.frame{font-size:15px !important;line-height:1.9 !important;}
+.card-footer{margin-top:auto !important;min-height:35px;box-sizing:border-box;}
+@media(max-width:900px){.warning-marquee{left:18px;right:18px;top:46px;height:34px;background:rgba(0,0,0,.12);border-radius:0 0 10px 10px}.app{padding-top:92px !important}}
+@media(max-width:620px){.warning-marquee{left:12px;right:12px}.warning-track{font-size:12px;animation-duration:18s}.card{height:235px !important;min-height:235px !important}}
 </style>
 </head>
 <body data-theme="dark">
@@ -466,7 +484,10 @@ body{
 <div class="header-wrap">
   <div class="header-brand">
     <div class="brand-mark">C</div>
-    <div class="brand-copy"><strong>Canned Tool <span style="display:inline;color:#e9d5ff">v2.1</span></strong><span>مساعد الكاند السريع</span></div>
+    <div class="brand-copy"><strong>Canned Tool</strong></div>
+  </div>
+  <div class="warning-marquee" aria-label="تنبيه">
+    <div class="warning-track">⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️</div>
   </div>
 </div>
 
@@ -490,7 +511,7 @@ body{
     <div class="main-head">
       <div class="main-head-copy">
         <h1 id="sectionTitle">اختر شيت للبدء</h1>
-        <p>اختار الكاند المناسب واضغط عليه للنسخ مباشرة.</p>
+        
       </div>
       <div class="main-badge"><b id="resultCount">0</b> كاند</div>
     </div>
