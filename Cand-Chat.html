@@ -310,7 +310,7 @@ body{
   background:linear-gradient(90deg,rgba(109,63,214,.96),rgba(78,168,255,.96));
   box-shadow:0 5px 18px rgba(0,0,0,.20);
 }
-.marquee{display:block;position:absolute;left:190px;right:250px;overflow:hidden;white-space:nowrap;padding:0 12px;direction:rtl;}
+.marquee{display:block;position:absolute;left:190px;right:245px;overflow:hidden;white-space:nowrap;padding:0 12px;direction:rtl;}
 .marquee .text{display:inline-block;white-space:nowrap;font-weight:800;color:#fff;font-size:13px;text-shadow:0 1px 2px rgba(0,0,0,.25);animation:moveLeft 18s linear infinite;}
 @keyframes moveLeft{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
 .header-brand{
@@ -414,18 +414,19 @@ body{
 .quick-bar{display:none}
 .hero,.stats,.section-head{display:none}
 /* Keep the login dimensions unchanged; only refine its visual treatment. */
-#loginOverlay{background:radial-gradient(circle at center,#18243a 0%,#070d1a 100%);backdrop-filter:blur(8px)}
+#loginOverlay{background:linear-gradient(135deg,#0b1220 0%,#111827 55%,#172033 100%);backdrop-filter:blur(4px)}
 /* Compact login — smaller and more balanced without changing the page structure */
-#loginBox{width:280px;max-width:84%;border-radius:13px;padding:18px 17px 15px;background:rgba(15,23,36,.96);box-shadow:0 14px 34px rgba(0,0,0,.58)}
+#loginBox{width:265px;max-width:82vw;border-radius:14px;padding:17px 16px 14px;background:rgba(15,23,36,.94);border:1px solid rgba(255,255,255,.07);box-shadow:0 12px 30px rgba(0,0,0,.45)}
 #loginBox .logoHeader{gap:8px;margin-bottom:8px}
-#loginBox .logoCircle{width:32px;height:32px;font-size:16px}
-#loginBox .logoHeader span{font-size:16px}
-#loginBox h3{margin:0 0 11px;font-size:13px}
-#loginBox input{height:38px;line-height:38px;margin-bottom:10px;font-size:13px;border-radius:8px}
-#loginBox button{padding:9px;font-size:13px;border-radius:8px}
-#loginBox #loginMsg{min-height:14px;margin-top:7px;font-size:11px}
+#loginBox .logoCircle{width:30px;height:30px;font-size:15px}
+#loginBox .logoHeader span{font-size:15px}
+#loginBox h3{margin:0 0 10px;font-size:12px}
+#loginBox input{height:36px;line-height:36px;margin-bottom:9px;font-size:12.5px;border-radius:8px}
+#loginBox button{padding:8px;font-size:12.5px;border-radius:8px}
+#loginBox #loginMsg{min-height:13px;margin-top:6px;font-size:10.5px}
 /* Warning stays in the top header and remains visibly moving */
-.marquee .text{animation-duration:20s;letter-spacing:.05px}
+.marquee .text{animation-duration:20s;letter-spacing:.05px;font-size:13px}
+.marquee .text::selection{background:rgba(255,255,255,.2)}
 @media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){
   .app{padding:74px 14px 60px}
@@ -435,7 +436,7 @@ body{
 @media(max-width:620px){
   .grid{grid-template-columns:1fr}.header-brand{right:13px}.brand-copy span{display:none}
   .marquee{left:58px;right:185px;padding:0 6px}.marquee .text{font-size:11px}
-  #loginBox{width:270px;padding:17px 15px 14px}
+  #loginBox{width:255px;padding:16px 14px 13px}
   .main-head-copy h1{font-size:19px}.main-badge{padding:7px 9px}
   .footer-wrapper{padding:0 10px}.footer-bar .text{font-size:9px}
 }
@@ -472,10 +473,10 @@ body{
 
 <!-- Header -->
 <div class="header-wrap">
-  <div class="marquee"><div class="text">⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️</div></div>
+  <div class="marquee" aria-label="Important warning"><div class="text">⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️</div></div>
   <div class="header-brand">
     <div class="brand-mark">C</div>
-    <div class="brand-copy"><strong>Canned Tool <span style="display:inline;color:#e9d5ff">v2.1</span></strong><span>مساعد الكاند السريع</span></div>
+    <div class="brand-copy"><strong>Canned Tool <span style="display:inline;color:#e9d5ff">v2.3</span></strong><span>مساعد الكاند السريع</span></div>
   </div>
 </div>
 
@@ -484,16 +485,16 @@ body{
 <div class="app">
   <aside class="sidebar">
     <div class="sidebar-top">
-      <div class="sidebar-title"><span>قائمة الشيتات</span><span class="tool-count" id="toolCount">0</span></div>
+      <div class="sidebar-title"><span>Canned Menu</span><span class="tool-count" id="toolCount">0</span></div>
     </div>
     <div class="search-box">
       <span class="search-icon">⌕</span>
       <input type="text" id="searchInput" placeholder="ابحث عن كاند..." autocomplete="off">
     </div>
-    <div class="nav-label">CANNED SHEETS</div>
+    <div class="nav-label">CANNED MENU</div>
     <div class="sheet-list" id="sheetList"></div>
     <div class="sidebar-bottom">
-      <div class="privacy-tip"><b>💡</b> اضغط على أي كاند لنسخه مباشرة إلى الحافظة.</div>
+      <div class="privacy-tip"><b>💡</b> اضغط على أي Canned لنسخه مباشرة إلى الحافظة.</div>
     </div>
   </aside>
 
@@ -501,7 +502,7 @@ body{
     <div class="main-head">
       <div class="main-head-copy">
         <h1 id="sectionTitle">اختر شيت للبدء</h1>
-        <p>اختار الكاند المناسب واضغط عليه للنسخ مباشرة.</p>
+        <p>اختار الـ Canned المناسب واضغط عليه للنسخ مباشرة.</p>
       </div>
       <div class="main-badge"><b id="resultCount">0</b> كاند</div>
     </div>
@@ -509,7 +510,7 @@ body{
   </main>
 </div>
 
-<div class="footer-wrapper"><div class="footer-bar"><div class="text">Designed &amp; Developed By : Geek ❤️ — Canned Tool v2.1 — 2025–2026</div></div></div>
+<div class="footer-wrapper"><div class="footer-bar"><div class="text">Designed &amp; Developed By : Geek ❤️ — Canned Tool v2.3 — 2025–2026</div></div></div>
 
 <!-- Click sound -->
 <audio id="clickSound" preload="auto">
@@ -637,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement('div');
       card.className = 'card';
       const displayContent = escapeHtml(item.content).replace(/\n/g,'<br>');
-      card.innerHTML = `<div class="card-title">${escapeHtml(item.name)}</div><div class="card-content"><div class="frame">${displayContent}</div></div><div class="card-footer" data-original-text="📄 من شيت: ${escapeHtml(item.sheet)}">📄 اضغط لنسخ الكاند</div>`;
+      card.innerHTML = `<div class="card-title">${escapeHtml(item.name)}</div><div class="card-content"><div class="frame">${displayContent}</div></div><div class="card-footer" data-original-text="📂 Canned Menu: ${escapeHtml(item.sheet)}">📂 Canned Menu: ${escapeHtml(item.sheet)}</div>`;
       card.addEventListener('click', () => {
         const contentToCopy = item.content.replace(/\n/g, "\n<p>&nbsp;</p>\n");
         copyText(contentToCopy);
@@ -645,7 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const footer = card.querySelector('.card-footer');
         const original = footer.getAttribute('data-original-text');
         footer.textContent = '✅ تم النسخ إلى الحافظة'; footer.classList.add('copied');
-        setTimeout(() => { footer.textContent = original || '📄 اضغط لنسخ الكاند'; footer.classList.remove('copied'); }, 1500);
+        setTimeout(() => { footer.textContent = original || `📂 Canned Menu: ${escapeHtml(item.sheet)}`; footer.classList.remove('copied'); }, 1500);
       });
       cardsGrid.appendChild(card);
       setTimeout(() => card.classList.add('visible'), 35 + index*20);
