@@ -666,148 +666,6 @@ body{
   .sidebar{right:auto !important; left:auto !important;}
   .main{margin-right:0 !important; margin-left:0 !important;}
 }
-
-/* ===== v3.4 Layout Reset — restore balanced desktop layout ===== */
-.app{
-  display:flex !important;
-  flex-direction:row-reverse !important;
-  direction:ltr !important;
-  gap:20px !important;
-  width:100% !important;
-  max-width:none !important;
-  margin:0 !important;
-  padding:42px 22px 52px !important;
-  box-sizing:border-box !important;
-  align-items:stretch !important;
-}
-.sidebar{
-  order:0 !important;
-  flex:0 0 var(--sidebar-w) !important;
-  width:var(--sidebar-w) !important;
-  box-sizing:border-box !important;
-  position:sticky !important;
-  top:42px !important;
-  right:auto !important;
-  left:auto !important;
-  margin:0 !important;
-  height:auto !important;
-  min-height:calc(100vh - 42px) !important;
-  max-height:none !important;
-  align-self:flex-start !important;
-  border-radius:0 0 12px 12px !important;
-  overflow:visible !important;
-}
-.main{
-  order:1 !important;
-  flex:1 1 auto !important;
-  width:auto !important;
-  min-width:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-  direction:rtl !important;
-}
-.sheet-list{
-  overflow:visible !important;
-  max-height:none !important;
-  flex-grow:0 !important;
-}
-.grid{
-  width:100% !important;
-  display:grid !important;
-  gap:14px !important;
-  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-}
-.card{
-  width:100% !important;
-  min-width:0 !important;
-  height:235px !important;
-  min-height:235px !important;
-}
-/* The footer should read as a small highlighted badge, not a full-width bar. */
-.footer-wrapper{
-  left:50% !important; right:auto !important;
-  transform:translateX(-50%) !important;
-  bottom:7px !important;
-  width:max-content !important;
-  padding:0 !important;
-}
-.footer-bar{
-  width:max-content !important;
-  min-width:0 !important;
-  height:30px !important;
-  padding:0 15px !important;
-  border-radius:9px !important;
-  background:linear-gradient(90deg,rgba(91,50,184,.96),rgba(71,127,218,.96)) !important;
-  border:1px solid rgba(255,255,255,.18) !important;
-  box-shadow:0 5px 18px rgba(0,0,0,.28),0 0 14px rgba(78,168,255,.12) !important;
-}
-.footer-bar .text{
-  color:#fff !important;
-  font-size:11px !important;
-  font-weight:800 !important;
-  white-space:nowrap !important;
-  text-align:center !important;
-}
-@media(max-width:1180px){
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
-}
-@media(max-width:920px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
-  .app{gap:16px !important;padding-left:14px !important;padding-right:14px !important;}
-  .sidebar{flex-basis:260px !important;width:260px !important;}
-}
-@media(max-width:700px){
-  .app{display:flex !important;flex-direction:column !important;direction:rtl !important;padding-top:74px !important;}
-  .sidebar{position:relative !important;top:auto !important;width:100% !important;flex:0 0 auto !important;min-height:0 !important;border-radius:14px !important;}
-  .main{width:100% !important;margin:0 !important;}
-  .grid{grid-template-columns:1fr !important;}
-}
-
-/* ===== v3.8 Focused Sidebar/Search Fix ===== */
-.search-box input{
-  direction:rtl !important;
-  text-align:right !important;
-  font-weight:800 !important;
-}
-.search-box input::placeholder{
-  text-align:right !important;
-  font-weight:800 !important;
-}
-/* Sidebar ends at the current viewport bottom; only its menu scrolls. */
-.sidebar{
-  position:fixed !important;
-  top:58px !important;
-  right:22px !important;
-  height:calc(100vh - 58px) !important;
-  min-height:0 !important;
-  max-height:none !important;
-  overflow:hidden !important;
-  border-radius:0 0 14px 14px !important;
-}
-.sheet-list{
-  flex:1 1 auto !important;
-  min-height:0 !important;
-  overflow-y:auto !important;
-  overflow-x:hidden !important;
-  max-height:none !important;
-}
-.nav-label{display:none !important;}
-@media(max-width:768px){
-  .sidebar{
-    position:relative !important;
-    top:auto !important;
-    right:auto !important;
-    height:auto !important;
-    min-height:0 !important;
-    overflow:visible !important;
-    border-radius:14px !important;
-  }
-  .sheet-list{
-    flex:initial !important;
-    overflow:visible !important;
-  }
-}
-
 </style>
 </head>
 <body data-theme="dark">
@@ -1118,141 +976,114 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
 
-<!-- v3.5 final layout polish -->
 <style>
-/* Keep the main canned area at 3 cards per row on desktop */
-@media (min-width: 1101px){
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
-}
-
-/* Search text / placeholder starts from the right */
-.search-box input{
-  direction:rtl !important;
-  text-align:right !important;
-}
-.search-box input::placeholder{
-  text-align:right !important;
-}
-</style>
-
-<!-- v3.6 balanced 3-card desktop layout -->
-<style>
-/* Keep the desktop composition compact like the original layout: 3 cards + right menu */
-@media (min-width: 1101px){
+/* ===== v4.0 BASELINE RESET =====
+   Restored from the agreed compact layout baseline (v3.3).
+   Only the requested controls are changed below.
+*/
+@media (min-width: 901px){
   .app{
     display:flex !important;
     flex-direction:row-reverse !important;
-    direction:ltr !important;
-    gap:22px !important;
-    width:100% !important;
-    max-width:1240px !important;
+    gap:20px !important;
+    padding:58px 22px 62px !important;
+    max-width:1500px !important;
     margin:0 auto !important;
-    padding:42px 12px 52px !important;
     box-sizing:border-box !important;
     align-items:flex-start !important;
   }
   .sidebar{
-    flex:0 0 225px !important;
-    width:225px !important;
-    max-width:225px !important;
-    position:sticky !important;
+    position:fixed !important;
     top:42px !important;
-    right:auto !important;
-    height:auto !important;
-    min-height:calc(100vh - 42px) !important;
+    right:22px !important;
+    left:auto !important;
+    width:var(--sidebar-w) !important;
+    height:calc(100vh - 42px) !important;
+    min-height:0 !important;
     max-height:none !important;
-    overflow:visible !important;
+    box-sizing:border-box !important;
+    display:flex !important;
+    flex-direction:column !important;
+    padding:14px 10px !important;
+    overflow:hidden !important;
+    z-index:110 !important;
+    margin:0 !important;
+    border-radius:0 !important;
+  }
+  .sheet-list{
+    flex:1 1 auto !important;
+    min-height:0 !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    max-height:none !important;
   }
   .main{
     flex:1 1 auto !important;
-    width:auto !important;
-    max-width:970px !important;
     min-width:0 !important;
-    margin:0 !important;
+    min-height:70vh !important;
+    margin-right:calc(var(--sidebar-w) + 20px) !important;
+    margin-left:0 !important;
     padding:0 !important;
   }
   .grid{
-    width:100% !important;
-    max-width:970px !important;
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-    gap:16px !important;
-  }
-  .card{
-    height:235px !important;
-    min-height:235px !important;
-  }
-}
-
-/* Medium screens: keep 3 cards while giving the menu enough room */
-@media (min-width: 921px) and (max-width:1100px){
-  .app{gap:18px !important; padding-left:12px !important; padding-right:12px !important;}
-  .sidebar{flex:0 0 225px !important; width:225px !important;}
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:13px !important;}
-}
-</style>
-
-<style>
-/* ===== v3.7 reference layout: compact 3-card composition ===== */
-@media (min-width: 1101px){
-  .app{
     display:grid !important;
-    grid-template-columns:minmax(0, 936px) 225px !important;
-    column-gap:93px !important;
-    width:min(1254px, calc(100vw - 48px)) !important;
-    max-width:1254px !important;
-    margin:0 auto !important;
-    transform:translateX(43px) !important;
-    padding:42px 0 52px !important;
-    box-sizing:border-box !important;
-    direction:ltr !important;
-    align-items:start !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:15px !important;
+    width:100% !important;
+    max-width:none !important;
   }
-  .main{
-    grid-column:1 !important;
-    grid-row:1 !important;
-    width:936px !important;
-    max-width:936px !important;
-    min-width:0 !important;
-    margin:0 !important;
-    padding:0 !important;
+}
+
+/* Search: Arabic starts from the right and is bold */
+.search-box input{
+  direction:rtl !important;
+  text-align:right !important;
+  font-weight:800 !important;
+}
+.search-box input::placeholder{
+  text-align:right !important;
+  font-weight:800 !important;
+}
+
+/* No secondary Canned Menu label below the search */
+.sidebar .nav-label,
+.sidebar .sidebar-bottom .nav-label{
+  display:none !important;
+}
+
+/* Footer: keep the latest agreed header-colored appearance */
+.footer-bar{
+  background:linear-gradient(90deg,#5b32b8 0%,#477fda 100%) !important;
+  border:1px solid rgba(255,255,255,.28) !important;
+  color:#fff !important;
+  box-shadow:0 5px 16px rgba(0,0,0,.20) !important;
+}
+.footer-bar .text{
+  color:#fff !important;
+  font-weight:800 !important;
+}
+
+@media (max-width:900px){
+  .app{
+    display:flex !important;
+    flex-direction:column !important;
+    padding-top:92px !important;
   }
   .sidebar{
-    grid-column:2 !important;
-    grid-row:1 !important;
-    position:sticky !important;
-    top:42px !important;
-    width:225px !important;
-    max-width:225px !important;
-    min-width:225px !important;
+    position:relative !important;
+    top:auto !important;
+    right:auto !important;
+    width:100% !important;
     height:auto !important;
-    min-height:calc(100vh - 42px) !important;
-    max-height:none !important;
-    margin:0 !important;
-    overflow:visible !important;
+    min-height:0 !important;
+    max-height:310px !important;
+    overflow:hidden !important;
   }
-  .grid{
-    width:936px !important;
-    max-width:936px !important;
-    grid-template-columns:repeat(3, 1fr) !important;
-    gap:16px !important;
+  .sheet-list{
+    overflow-y:auto !important;
+    max-height:180px !important;
   }
-  .card{
-    min-width:0 !important;
-    width:auto !important;
-    height:235px !important;
-    min-height:235px !important;
-  }
-}
-@media (min-width:1101px) and (max-width:1250px){
-  .app{
-    grid-template-columns:minmax(0,1fr) 225px !important;
-    width:calc(100vw - 28px) !important;
-    max-width:none !important;
-    column-gap:20px !important;
-    padding-left:14px !important;
-    padding-right:14px !important;
-    transform:none !important;
-  }
-  .main,.grid{width:100% !important;max-width:none !important;}
+  .main{margin-right:0 !important;}
+  .grid{grid-template-columns:1fr !important;}
 }
 </style>
