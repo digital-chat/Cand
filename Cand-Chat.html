@@ -1194,3 +1194,36 @@ document.addEventListener("DOMContentLoaded", () => {
   .sidebar .sheet-list{min-height:0 !important; overflow-y:auto !important;}
 }
 </style>
+
+<style>
+/* ===== v4.6 — Force sidebar menu scrolling ===== */
+@media (min-width:901px){
+  .sidebar{
+    position:fixed !important;
+    top:42px !important;
+    bottom:0 !important;
+    height:calc(100vh - 42px) !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow:hidden !important;
+    display:flex !important;
+    flex-direction:column !important;
+    box-sizing:border-box !important;
+  }
+  .sidebar .sidebar-top,
+  .sidebar .search-box{
+    flex:0 0 auto !important;
+  }
+  .sidebar .sheet-list{
+    display:block !important;
+    flex:1 1 0 !important;
+    height:0 !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow-y:scroll !important;
+    overflow-x:hidden !important;
+    scrollbar-width:thin !important;
+    overscroll-behavior:contain !important;
+  }
+}
+</style>
