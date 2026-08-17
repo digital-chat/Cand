@@ -1071,3 +1071,20 @@ document.addEventListener("DOMContentLoaded", () => {
   .sheet-list{overflow:visible !important;max-height:none !important;}
 }
 </style>
+
+<!-- v3.5 final layout polish -->
+<style>
+/* Keep the main canned area at 3 cards per row on desktop */
+@media (min-width: 1101px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+}
+
+/* Search text / placeholder starts from the right */
+.search-box input{
+  direction:rtl !important;
+  text-align:right !important;
+}
+.search-box input::placeholder{
+  text-align:right !important;
+}
+</style>
