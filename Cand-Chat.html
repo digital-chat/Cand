@@ -574,6 +574,194 @@ body{
   .footer-bar .text{font-size:10px !important;}
 }
 
+
+/* ===== v3.1 Search + Sidebar Scroll Refinement ===== */
+.search-box{
+  height:48px !important;
+  width:calc(100% - 8px) !important;
+  margin:0 4px 14px !important;
+  padding:0 12px !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+  direction:rtl !important;
+  border-radius:12px !important;
+  background:#0b1424 !important;
+  border:1px solid rgba(78,168,255,.55) !important;
+  box-shadow:0 0 0 2px rgba(78,168,255,.10), 0 5px 16px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+.search-box:focus-within{
+  border-color:#4ea8ff !important;
+  box-shadow:0 0 0 2px rgba(78,168,255,.22), 0 0 16px rgba(78,168,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+.search-box input{
+  order:2 !important;
+  flex:1 !important;
+  min-width:0 !important;
+  height:100% !important;
+  padding:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  color:#f8fafc !important;
+  font-size:13px !important;
+  font-weight:500 !important;
+  direction:ltr !important;
+  text-align:left !important;
+}
+.search-box input::placeholder{color:#8b98ab !important;opacity:1 !important;}
+.search-icon{
+  order:1 !important;
+  flex:0 0 auto !important;
+  width:25px !important;
+  height:25px !important;
+  display:grid !important;
+  place-items:center !important;
+  font-size:20px !important;
+  line-height:1 !important;
+  color:#55b7ff !important;
+  opacity:1 !important;
+  text-shadow:0 0 8px rgba(78,168,255,.55) !important;
+}
+/* Sidebar reaches the viewport bottom, then grows naturally with page scroll. */
+.sidebar{
+  position:sticky !important;
+  top:42px !important;
+  height:auto !important;
+  min-height:calc(100vh - 42px) !important;
+  max-height:none !important;
+  bottom:auto !important;
+  overflow:visible !important;
+  border-radius:0 !important;
+  box-sizing:border-box !important;
+}
+.sheet-list{
+  overflow:visible !important;
+  max-height:none !important;
+  flex-grow:0 !important;
+}
+@media(max-width:768px){
+  .sidebar{position:relative !important;top:auto !important;min-height:0 !important;height:auto !important;}
+  .sheet-list{overflow:visible !important;max-height:none !important;}
+}
+
+/* ===== v3.2 Direction Fix — Sidebar Right / Cards Left ===== */
+.app{
+  direction:ltr !important;
+  flex-direction:row-reverse !important;
+}
+.sidebar{
+  right:22px !important;
+  left:auto !important;
+  direction:rtl !important;
+}
+.main{
+  direction:rtl !important;
+  margin-right:calc(var(--sidebar-w) + 20px) !important;
+  margin-left:0 !important;
+}
+@media(max-width:900px){
+  .app{direction:rtl !important; flex-direction:column !important;}
+  .sidebar{right:auto !important; left:auto !important;}
+  .main{margin-right:0 !important; margin-left:0 !important;}
+}
+
+/* ===== v3.4 Layout Reset — restore balanced desktop layout ===== */
+.app{
+  display:flex !important;
+  flex-direction:row-reverse !important;
+  direction:ltr !important;
+  gap:20px !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:42px 22px 52px !important;
+  box-sizing:border-box !important;
+  align-items:stretch !important;
+}
+.sidebar{
+  order:0 !important;
+  flex:0 0 var(--sidebar-w) !important;
+  width:var(--sidebar-w) !important;
+  box-sizing:border-box !important;
+  position:sticky !important;
+  top:42px !important;
+  right:auto !important;
+  left:auto !important;
+  margin:0 !important;
+  height:auto !important;
+  min-height:calc(100vh - 42px) !important;
+  max-height:none !important;
+  align-self:flex-start !important;
+  border-radius:0 0 12px 12px !important;
+  overflow:visible !important;
+}
+.main{
+  order:1 !important;
+  flex:1 1 auto !important;
+  width:auto !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  direction:rtl !important;
+}
+.sheet-list{
+  overflow:visible !important;
+  max-height:none !important;
+  flex-grow:0 !important;
+}
+.grid{
+  width:100% !important;
+  display:grid !important;
+  gap:14px !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+}
+.card{
+  width:100% !important;
+  min-width:0 !important;
+  height:235px !important;
+  min-height:235px !important;
+}
+/* The footer should read as a small highlighted badge, not a full-width bar. */
+.footer-wrapper{
+  left:50% !important; right:auto !important;
+  transform:translateX(-50%) !important;
+  bottom:7px !important;
+  width:max-content !important;
+  padding:0 !important;
+}
+.footer-bar{
+  width:max-content !important;
+  min-width:0 !important;
+  height:30px !important;
+  padding:0 15px !important;
+  border-radius:9px !important;
+  background:linear-gradient(90deg,rgba(91,50,184,.96),rgba(71,127,218,.96)) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  box-shadow:0 5px 18px rgba(0,0,0,.28),0 0 14px rgba(78,168,255,.12) !important;
+}
+.footer-bar .text{
+  color:#fff !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  white-space:nowrap !important;
+  text-align:center !important;
+}
+@media(max-width:1180px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+}
+@media(max-width:920px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+  .app{gap:16px !important;padding-left:14px !important;padding-right:14px !important;}
+  .sidebar{flex-basis:260px !important;width:260px !important;}
+}
+@media(max-width:700px){
+  .app{display:flex !important;flex-direction:column !important;direction:rtl !important;padding-top:74px !important;}
+  .sidebar{position:relative !important;top:auto !important;width:100% !important;flex:0 0 auto !important;min-height:0 !important;border-radius:14px !important;}
+  .main{width:100% !important;margin:0 !important;}
+  .grid{grid-template-columns:1fr !important;}
+}
 </style>
 </head>
 <body data-theme="dark">
@@ -835,3 +1023,51 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- #################### END: Anti-Theft Script (DIRECT ACTION) #################### -->
 </body>
 </html>
+<style>
+/* ===== v3.3 Layout refinement ===== */
+.app{
+  align-items:flex-start !important;
+}
+/* Right sidebar: grows with its menu; the page handles scrolling */
+.sidebar{
+  position:sticky !important;
+  top:42px !important;
+  right:auto !important;
+  height:auto !important;
+  min-height:calc(100vh - 42px) !important;
+  max-height:none !important;
+  overflow:visible !important;
+  align-self:flex-start !important;
+}
+.sheet-list{
+  overflow:visible !important;
+  max-height:none !important;
+}
+/* Four cards per row when the available screen width allows it */
+@media(min-width:1200px){
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}
+}
+@media(min-width:901px) and (max-width:1199px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+}
+/* Brighter, clearer footer */
+.footer-bar{
+  background:linear-gradient(135deg,rgba(78,168,255,.20),rgba(109,63,214,.24),rgba(8,15,28,.98)) !important;
+  border:1px solid rgba(129,140,248,.55) !important;
+  box-shadow:0 7px 24px rgba(0,0,0,.35),0 0 16px rgba(109,63,214,.16),inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+.footer-bar .text{
+  color:#ffffff !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.45) !important;
+}
+[data-theme="light"] .footer-bar{
+  background:linear-gradient(135deg,rgba(78,168,255,.16),rgba(109,63,214,.14),rgba(255,255,255,.98)) !important;
+  border-color:rgba(99,102,241,.35) !important;
+}
+@media(max-width:900px){
+  .sidebar{position:relative !important;min-height:0 !important;top:auto !important;}
+  .sheet-list{overflow:visible !important;max-height:none !important;}
+}
+</style>
