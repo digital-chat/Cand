@@ -310,7 +310,9 @@ body{
   background:linear-gradient(90deg,rgba(109,63,214,.96),rgba(78,168,255,.96));
   box-shadow:0 5px 18px rgba(0,0,0,.20);
 }
-.marquee{display:none}
+.marquee{display:block;position:absolute;left:190px;right:250px;overflow:hidden;white-space:nowrap;padding:0 12px;direction:rtl;}
+.marquee .text{display:inline-block;white-space:nowrap;font-weight:800;color:#fff;font-size:13px;text-shadow:0 1px 2px rgba(0,0,0,.25);animation:moveLeft 18s linear infinite;}
+@keyframes moveLeft{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
 .header-brand{
   position:absolute;right:24px;top:7px;height:44px;
   display:flex;align-items:center;gap:10px;direction:ltr;
@@ -413,7 +415,17 @@ body{
 .hero,.stats,.section-head{display:none}
 /* Keep the login dimensions unchanged; only refine its visual treatment. */
 #loginOverlay{background:radial-gradient(circle at center,#18243a 0%,#070d1a 100%);backdrop-filter:blur(8px)}
-#loginBox{width:380px;max-width:92%;border-radius:16px;padding:30px 24px 24px;background:rgba(15,23,36,.94);box-shadow:0 20px 50px rgba(0,0,0,.7)}
+/* Compact login — smaller and more balanced without changing the page structure */
+#loginBox{width:280px;max-width:84%;border-radius:13px;padding:18px 17px 15px;background:rgba(15,23,36,.96);box-shadow:0 14px 34px rgba(0,0,0,.58)}
+#loginBox .logoHeader{gap:8px;margin-bottom:8px}
+#loginBox .logoCircle{width:32px;height:32px;font-size:16px}
+#loginBox .logoHeader span{font-size:16px}
+#loginBox h3{margin:0 0 11px;font-size:13px}
+#loginBox input{height:38px;line-height:38px;margin-bottom:10px;font-size:13px;border-radius:8px}
+#loginBox button{padding:9px;font-size:13px;border-radius:8px}
+#loginBox #loginMsg{min-height:14px;margin-top:7px;font-size:11px}
+/* Warning stays in the top header and remains visibly moving */
+.marquee .text{animation-duration:20s;letter-spacing:.05px}
 @media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){
   .app{padding:74px 14px 60px}
@@ -422,6 +434,8 @@ body{
 }
 @media(max-width:620px){
   .grid{grid-template-columns:1fr}.header-brand{right:13px}.brand-copy span{display:none}
+  .marquee{left:58px;right:185px;padding:0 6px}.marquee .text{font-size:11px}
+  #loginBox{width:270px;padding:17px 15px 14px}
   .main-head-copy h1{font-size:19px}.main-badge{padding:7px 9px}
   .footer-wrapper{padding:0 10px}.footer-bar .text{font-size:9px}
 }
@@ -458,6 +472,7 @@ body{
 
 <!-- Header -->
 <div class="header-wrap">
+  <div class="marquee"><div class="text">⚠️ تذكر دائماً : استخدامك لهذه الأداة على مسؤوليتك الشخصية، ويجب التأكد من الويكي ⚠️</div></div>
   <div class="header-brand">
     <div class="brand-mark">C</div>
     <div class="brand-copy"><strong>Canned Tool <span style="display:inline;color:#e9d5ff">v2.1</span></strong><span>مساعد الكاند السريع</span></div>
