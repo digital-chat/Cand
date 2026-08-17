@@ -503,15 +503,15 @@ body{
 }
 .main{padding-top:0 !important;}
 .footer-wrapper{
-  left:auto !important; right:22px !important; bottom:8px !important;
-  width:auto !important; padding:0 !important;
+  left:auto !important; left:50% !important; right:auto !important; bottom:8px !important;
+  transform:translateX(-50%) !important; width:auto !important; padding:0 !important;
 }
 .footer-bar{
   width:max-content !important; max-width:calc(100vw - 44px) !important;
   min-width:0 !important; margin:0 !important; height:28px !important;
   padding:0 12px !important; border-radius:8px !important;
 }
-.footer-bar .text{font-size:9px !important; white-space:nowrap !important;}
+.footer-bar .text{font-size:10px !important; white-space:nowrap !important; text-align:center !important;}
 @media(max-width:900px){
   .header-wrap{height:42px !important;}
   .warning-marquee{position:absolute !important; top:42px !important; right:12px !important; left:12px !important; height:32px !important; background:rgba(0,0,0,.12) !important; border-radius:0 0 9px 9px !important;}
@@ -521,6 +521,30 @@ body{
   .footer-wrapper{right:10px !important; bottom:6px !important;}
 }
 
+
+/* v2.8 visual polish */
+.search-box{
+  height:46px !important;
+  margin:0 2px 14px !important;
+  padding:0 14px !important;
+  border-radius:14px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035)) !important;
+  border:1px solid rgba(148,163,184,.24) !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.04) !important;
+  transition:all .2s ease !important;
+}
+.search-box:focus-within{
+  border-color:rgba(78,168,255,.72) !important;
+  box-shadow:0 0 0 3px rgba(78,168,255,.11), 0 8px 22px rgba(0,0,0,.16) !important;
+  transform:translateY(-1px) !important;
+}
+.search-icon{font-size:17px !important; opacity:.9 !important;}
+.search-box input{font-size:14px !important; font-weight:600 !important;}
+.search-box input::placeholder{opacity:.72 !important;}
+.footer-wrapper{left:50% !important; right:auto !important; transform:translateX(-50%) !important; bottom:7px !important;}
+.footer-bar{justify-content:center !important;}
+.footer-bar .text{font-size:10px !important; text-align:center !important; white-space:nowrap !important;}
+@media(max-width:900px){.footer-wrapper{left:50% !important;right:auto !important;transform:translateX(-50%) !important;}.footer-bar .text{font-size:9px !important;}}
 </style>
 </head>
 <body data-theme="dark">
@@ -591,7 +615,7 @@ body{
   </main>
 </div>
 
-<div class="footer-wrapper"><div class="footer-bar"><div class="text">Designed &amp; Developed By : Geek ❤️ — Canned Tool v2.1 — 2025–2026</div></div></div>
+<div class="footer-wrapper"><div class="footer-bar"><div class="text">Designed and Developed By : Geek © 2025 — Version 5.1.2</div></div></div>
 
 <!-- Click sound -->
 <audio id="clickSound" preload="auto">
