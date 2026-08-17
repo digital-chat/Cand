@@ -1149,3 +1149,24 @@ document.addEventListener("DOMContentLoaded", () => {
   .sidebar .sheet-list{min-height:0 !important; overflow-y:auto !important;}
 }
 </style>
+
+<style>
+/* ===== v4.3 — Sidebar reaches the bottom of the visible viewport ===== */
+@media (min-width:901px){
+  .sidebar{
+    top:42px !important;
+    bottom:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow:hidden !important;
+  }
+  .sidebar .sheet-list{
+    flex:1 1 0 !important;
+    min-height:0 !important;
+    max-height:none !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+  }
+}
+</style>
