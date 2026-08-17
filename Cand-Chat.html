@@ -545,6 +545,35 @@ body{
 .footer-bar{justify-content:center !important;}
 .footer-bar .text{font-size:10px !important; text-align:center !important; white-space:nowrap !important;}
 @media(max-width:900px){.footer-wrapper{left:50% !important;right:auto !important;transform:translateX(-50%) !important;}.footer-bar .text{font-size:9px !important;}}
+
+/* ===== v3.0 Footer Visibility Fix ===== */
+.footer-wrapper{
+  left:50% !important; right:auto !important; transform:translateX(-50%) !important;
+  bottom:7px !important; width:max-content !important; padding:0 !important;
+  z-index:500 !important;
+}
+.footer-bar{
+  width:max-content !important; max-width:calc(100vw - 24px) !important;
+  min-width:0 !important; height:30px !important;
+  padding:0 14px !important; margin:0 !important;
+  border-radius:9px !important;
+  background:rgba(8,15,28,.96) !important;
+  border:1px solid rgba(148,163,184,.38) !important;
+  box-shadow:0 5px 18px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+.footer-bar .text{
+  color:#e5e7eb !important; font-size:11px !important;
+  font-weight:700 !important; line-height:1 !important;
+  white-space:nowrap !important; text-align:center !important;
+  opacity:1 !important;
+}
+[data-theme="light"] .footer-bar{background:rgba(255,255,255,.98) !important;border-color:#cbd5e1 !important;}
+[data-theme="light"] .footer-bar .text{color:#334155 !important;}
+@media(max-width:620px){
+  .footer-bar{height:28px !important;padding:0 10px !important;}
+  .footer-bar .text{font-size:10px !important;}
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -598,7 +627,6 @@ body{
       <span class="search-icon">⌕</span>
       <input type="text" id="searchInput" placeholder="ابحث عن كاند..." autocomplete="off">
     </div>
-    <div class="nav-label">CANNED MENU</div>
     <div class="sheet-list" id="sheetList"></div>
 
   </aside>
