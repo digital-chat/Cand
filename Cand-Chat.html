@@ -910,7 +910,7 @@ document.addEventListener("DOMContentLoaded", () => {
         playClick();
         const footer = card.querySelector('.card-footer');
         const original = footer.getAttribute('data-original-text');
-        footer.textContent = '✅ تم النسخ'; footer.classList.add('copied');
+        footer.textContent = 'تم النسخ ✅'; footer.classList.add('copied');
         setTimeout(() => { footer.textContent = original || '📂 ' + escapeHtml(item.sheet); footer.classList.remove('copied'); }, 1500);
       });
       cardsGrid.appendChild(card);
