@@ -1462,14 +1462,28 @@ body::after{
   box-shadow:0 28px 80px rgba(0,0,0,.65),0 0 60px rgba(88,221,255,.06) !important;
   font-family:'IBM Plex Sans Arabic',sans-serif !important;position:relative !important;overflow:hidden !important;
 }
-#loginBox::before{content:'CAND // ACCESS TERMINAL';display:block;text-align:left;margin-bottom:22px;color:var(--c-cyan);font:600 9px 'JetBrains Mono',monospace;letter-spacing:1.5px;}
+#loginBox::before{display:none !important;}
 .logoCircle{
   width:50px !important;height:50px !important;border-radius:12px !important;
   background:var(--c-cyan-soft) !important;color:var(--c-cyan) !important;border:1px solid rgba(88,221,255,.25) !important;
   box-shadow:0 0 30px rgba(88,221,255,.12) !important;font-family:'JetBrains Mono',monospace !important;
 }
-.logoHeader{gap:12px !important;justify-content:flex-start !important;margin-bottom:12px !important;}
-.logoHeader span{font-family:'Changa',sans-serif !important;font-size:21px !important;color:var(--c-text) !important;}
+.logoHeader{
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:14px !important;
+  margin:0 0 16px !important;
+  width:100% !important;
+  text-align:center !important;
+}
+.logoHeader span{
+  font-family:'Changa',sans-serif !important;
+  font-size:24px !important;
+  color:var(--c-text) !important;
+  text-align:center !important;
+  line-height:1.1 !important;
+}
 #loginBox h3{font-family:'IBM Plex Sans Arabic',sans-serif !important;color:var(--c-amber) !important;font-size:13px !important;letter-spacing:.4px !important;text-transform:none !important;}
 #loginBox input{
   height:48px !important;border-radius:10px !important;background:#071019 !important;border:1px solid rgba(88,221,255,.16) !important;
