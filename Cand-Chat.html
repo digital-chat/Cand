@@ -142,14 +142,15 @@ button{font-family:inherit;}
 #loginBox h3{margin:0 0 6px;font-size:17px;font-weight:700;color:#e9eaf7;font-family:var(--font-arabic);}
 #loginBox .login-sub{margin:0 0 22px;font-size:12.5px;color:#8b90b3;font-family:var(--font-arabic);}
 #loginBox .prompt-row{
-  direction:rtl;display:flex;align-items:center;gap:8px;
+  direction:ltr;display:flex;align-items:center;gap:8px;
   background:#0a0b12;border:1px solid #23263a;border-radius:9px;padding:0 12px;
   transition:border-color .2s ease, box-shadow .2s ease;
 }
 #loginBox .prompt-row:focus-within{border-color:#b18cff;box-shadow:0 0 0 3px rgba(177,140,255,.15);}
 #loginBox input{
   flex:1;border:0;outline:0;background:transparent;color:#e9eaf7;
-  font-family:var(--font-arabic);font-size:13.5px;font-weight:600;padding:13px 0;direction:ltr;text-align:right;
+  font-family:var(--font-arabic);font-size:13.5px;font-weight:600;padding:13px 0;
+  direction:ltr !important;text-align:left !important;unicode-bidi:normal !important;
 }
 #loginBox input::placeholder{color:#4d5170;font-weight:500;}
 #loginBox button{
