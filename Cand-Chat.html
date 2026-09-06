@@ -152,6 +152,16 @@ button{font-family:inherit;}
   font-family:var(--font-arabic);font-size:13.5px;font-weight:600;padding:13px 0;
   direction:ltr !important;text-align:left !important;unicode-bidi:normal !important;
 }
+#loginBox input:-webkit-autofill,
+#loginBox input:-webkit-autofill:hover,
+#loginBox input:-webkit-autofill:focus,
+#loginBox input:-webkit-autofill:active{
+  -webkit-text-fill-color:#e9eaf7;
+  -webkit-box-shadow:0 0 0 1000px #0a0b12 inset;
+  box-shadow:0 0 0 1000px #0a0b12 inset;
+  caret-color:#e9eaf7;
+  transition:background-color 9999s ease-in-out 0s;
+}
 #loginBox input::placeholder{color:#4d5170;font-weight:500;}
 #loginBox button{
   width:100%;margin-top:14px;padding:13px;border:0;border-radius:9px;cursor:pointer;
