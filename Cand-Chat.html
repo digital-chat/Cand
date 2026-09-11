@@ -107,72 +107,88 @@ button{font-family:inherit;}
 .dots i:nth-child(2){background:#ffbd2e;}
 .dots i:nth-child(3){background:#28c840;}
 
-/* ============ LOGIN — terminal auth ============ */
+/* ============ LOGIN — embossed / neumorphic ============ */
 #loginOverlay{
-  position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(177,140,255,.14),transparent 55%),
-    #07080f;
+  position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  background:#15161f;
   padding:20px;
   animation:fadeIn .35s ease both;
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-#loginBox{
-  width:400px;max-width:100%;
-  background:#0f1119;
-  border:1px solid #23263a;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 30px 70px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(177,140,255,.06);
-  font-family:var(--font-mono);
-  animation:riseIn .45s cubic-bezier(.19,1,.22,1) both;
+
+.login-circle{
+  position:relative;
+  width:min(90vw,420px);aspect-ratio:1/1;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#15161f;
+  box-shadow:-24px -24px 54px rgba(255,255,255,.035), 26px 26px 60px rgba(0,0,0,.6);
+  animation:riseIn .5s cubic-bezier(.19,1,.22,1) both;
 }
-@keyframes riseIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
-.termbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;background:#151827;border-bottom:1px solid #23263a;
+@keyframes riseIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+
+.login-inner{
+  width:min(64%,270px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:13px;
+  transition:opacity .3s ease, transform .3s ease;
 }
-.termbar span{font-size:12px;color:#8b90b3;font-family:var(--font-arabic);font-weight:600;}
-#loginBox .termbody{padding:30px 26px 24px;text-align:center;}
-#loginBox .login-mark{
-  width:52px;height:52px;margin:0 auto 16px;border-radius:14px;display:grid;place-items:center;
+.login-inner.hide{opacity:0;transform:scale(.94);pointer-events:none;}
+
+.login-mark{
+  width:54px;height:54px;border-radius:16px;display:grid;place-items:center;margin-bottom:2px;
   font-family:var(--font-mono);font-weight:700;font-size:22px;color:#0c0d16;
   background:linear-gradient(135deg,#6fe3d9,#b18cff);
+  box-shadow:-6px -6px 12px rgba(255,255,255,.04), 6px 6px 16px rgba(0,0,0,.55);
 }
-#loginBox h3{margin:0 0 6px;font-size:17px;font-weight:700;color:#e9eaf7;font-family:var(--font-arabic);}
-#loginBox .login-sub{margin:0 0 22px;font-size:12.5px;color:#8b90b3;font-family:var(--font-arabic);}
-#loginBox .prompt-row{
-  direction:ltr;display:flex;align-items:center;gap:8px;
-  background:#0a0b12;border:1px solid #23263a;border-radius:9px;padding:0 12px;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-#loginBox .prompt-row:focus-within{border-color:#b18cff;box-shadow:0 0 0 3px rgba(177,140,255,.15);}
-#loginBox input{
-  flex:1;border:0;outline:0;background:transparent;color:#e9eaf7;
-  font-family:var(--font-arabic);font-size:13.5px;font-weight:600;padding:13px 0;
+.login-circle h3{margin:0;font-size:17px;font-weight:700;color:#e9eaf7;font-family:var(--font-arabic);}
+.login-sub{margin:0;font-size:12px;color:#7c81a0;font-family:var(--font-arabic);}
+
+.neu-input{
+  width:100%;border:none;outline:none;border-radius:999px;
+  padding:15px 20px;background:#15161f;color:#e9eaf7;
+  font-family:var(--font-arabic);font-size:13.5px;font-weight:600;
+  box-shadow:inset 6px 6px 12px rgba(0,0,0,.6), inset -6px -6px 12px rgba(255,255,255,.03);
   direction:ltr !important;text-align:left !important;unicode-bidi:normal !important;
+  transition:box-shadow .2s ease;
 }
-#loginBox input:-webkit-autofill,
-#loginBox input:-webkit-autofill:hover,
-#loginBox input:-webkit-autofill:focus,
-#loginBox input:-webkit-autofill:active{
+.neu-input:focus{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55), inset -5px -5px 10px rgba(255,255,255,.03), 0 0 0 3px rgba(177,140,255,.16);}
+.neu-input::placeholder{color:#565b78;font-weight:500;}
+.neu-input:-webkit-autofill,
+.neu-input:-webkit-autofill:hover,
+.neu-input:-webkit-autofill:focus,
+.neu-input:-webkit-autofill:active{
   -webkit-text-fill-color:#e9eaf7;
-  -webkit-box-shadow:0 0 0 1000px #0a0b12 inset;
-  box-shadow:0 0 0 1000px #0a0b12 inset;
+  -webkit-box-shadow:0 0 0 1000px #15161f inset, inset 6px 6px 12px rgba(0,0,0,.6), inset -6px -6px 12px rgba(255,255,255,.03);
+  box-shadow:0 0 0 1000px #15161f inset, inset 6px 6px 12px rgba(0,0,0,.6), inset -6px -6px 12px rgba(255,255,255,.03);
   caret-color:#e9eaf7;
   transition:background-color 9999s ease-in-out 0s;
 }
-#loginBox input::placeholder{color:#4d5170;font-weight:500;}
-#loginBox button{
-  width:100%;margin-top:14px;padding:13px;border:0;border-radius:9px;cursor:pointer;
-  font-family:var(--font-arabic);font-weight:700;font-size:14px;color:#0c0d16;
-  background:linear-gradient(90deg,#6fe3d9,#b18cff);
-  transition:filter .2s ease, transform .2s ease;
+
+.neu-btn{
+  width:100%;border:none;border-radius:999px;padding:15px;cursor:pointer;margin-top:2px;
+  font-family:var(--font-arabic);font-weight:800;font-size:14px;color:#0c0d16;
+  background:linear-gradient(135deg,#6fe3d9,#b18cff);
+  box-shadow:-6px -6px 14px rgba(255,255,255,.04), 6px 6px 18px rgba(0,0,0,.55);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
-#loginBox button:hover{filter:brightness(1.08);transform:translateY(-1px);}
-#loginBox button:active{transform:translateY(0);}
-#loginMsg{min-height:16px;margin-top:12px;font-size:12px;color:var(--danger);font-family:var(--font-arabic);font-weight:600;}
-#loginBox .foot-note{margin-top:18px;padding-top:14px;border-top:1px dashed #23263a;font-size:11px;color:#4d5170;font-family:var(--font-arabic);}
+.neu-btn:hover{filter:brightness(1.06);}
+.neu-btn:active{transform:translateY(1px);box-shadow:inset 4px 4px 10px rgba(0,0,0,.4);}
+
+#loginMsg{min-height:14px;font-size:11.5px;color:var(--danger);font-family:var(--font-arabic);font-weight:600;}
+
+.login-success{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  opacity:0;transform:scale(.9);pointer-events:none;
+  transition:opacity .35s ease, transform .35s ease;
+}
+.login-success.show{opacity:1;transform:scale(1);pointer-events:auto;}
+.success-check{
+  width:60px;height:60px;border-radius:50%;display:grid;place-items:center;margin-bottom:2px;
+  background:linear-gradient(135deg,#a6ecb0,#4fb86a);color:#0c1f12;font-size:26px;font-weight:900;
+  box-shadow:-6px -6px 12px rgba(255,255,255,.04), 6px 6px 16px rgba(0,0,0,.55);
+  animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes popIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+
+.login-footnote{font-size:11px;color:#565b78;font-family:var(--font-arabic);}
 
 #protectedApp{display:none;opacity:0;transition:opacity .5s ease;}
 
@@ -399,24 +415,22 @@ button{font-family:inherit;}
 
 <!-- Login Overlay -->
 <div id="loginOverlay">
-  <div id="loginBox">
-    <div class="termbar">
-      <span class="dots"><i></i><i></i><i></i></span>
-      <span>sign in</span>
-      <span style="width:24px"></span>
-    </div>
-    <div class="termbody">
+  <div class="login-circle" id="loginCircle">
+    <div class="login-inner" id="loginFormContent">
       <div class="login-mark">C</div>
       <h3>Canned Tool</h3>
       <p class="login-sub">Protected By Password</p>
-      <div class="prompt-row">
-        <input id="loginPwd" type="password" placeholder="Enter password" autocomplete="off" dir="ltr">
-      </div>
-      <button id="loginBtn">Login</button>
+      <input id="loginPwd" class="neu-input" type="password" placeholder="Enter password" autocomplete="off" dir="ltr">
+      <button id="loginBtn" class="neu-btn">Login</button>
       <div id="loginMsg"></div>
-      <div class="foot-note">For internal use only — Digital Chat Team</div>
+    </div>
+    <div class="login-success" id="loginSuccess">
+      <div class="success-check">✓</div>
+      <h3>Welcome Back!</h3>
+      <p class="login-sub">Login Successful</p>
     </div>
   </div>
+  <div class="login-footnote">For internal use only — Digital Chat Team</div>
 </div>
 
 <div id="protectedApp">
@@ -491,14 +505,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const pwd = document.getElementById('loginPwd');
   const msg = document.getElementById('loginMsg');
   const app = document.getElementById('protectedApp');
+  const formContent = document.getElementById('loginFormContent');
+  const successMsg = document.getElementById('loginSuccess');
 
   pwd.focus();
   function unlock() {
     if (pwd.value === FIXED_PASSWORD) {
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.style.display = 'none', 400);
-      app.style.display = 'block';
-      setTimeout(() => app.style.opacity = '1', 50);
+      formContent.classList.add('hide');
+      successMsg.classList.add('show');
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 400);
+        app.style.display = 'block';
+        setTimeout(() => app.style.opacity = '1', 50);
+      }, 900);
       sessionStorage.setItem('candat_unlocked', '1');
     } else {
       msg.textContent = 'كلمة المرور غير صحيحة، حاول مرة أخرى';
